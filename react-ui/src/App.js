@@ -24,12 +24,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className=“App”>
+      <div className='App'>
         <Navbar />
-        <Route exact path=‘/’ component={Landing}/>
-        <Route path=‘/dashboard’ component={Dashboard} />
-        <Route path=‘/preferences’ component={Preferences}/>
-        <Route path=‘/checkin’ component={Quiz} />
+        <Route exact path='/' component={Landing}/>
+        <Route path='/dashboard' component={Dashboard} />
+        <Route path='/preferences' component={Preferences}/>
+        <Route path='/checkin' component={Quiz} />
       </div>
     );
   }
