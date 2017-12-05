@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 
 function chartData(testData) {
 
-  let aspects = ['sleep', 'diet', 'physical', 'emotional', 'social', 'occupational', 'spiritual', 'intellectual']
+  let aspects = ['sleep', 'diet', 'activity', 'emotional', 'social', 'occupational', 'spiritual', 'intellectual']
 //======================= PROCESS DATA TO PROPER FORMAT =========================
   let inputData = aspects.map(function(id) {
     return {id: id,
@@ -69,7 +69,7 @@ g.append("g")
     .attr("class", "line")
     .attr("d", function(d) { return line(d.values); })
     .attr("id", function(d) { return d.id})
-    .style("stroke", function(d) {console.log('from path',d.id);return color(d.id); })
+    .style("stroke", function(d) {return color(d.id); })
     .style("fill", "none")
 
   let count = -1;
@@ -104,7 +104,6 @@ g.append("g")
         return d.active ? d.color : "grey" })
       d.active = active;
     })
-
 }
 
 export default chartData;

@@ -29,7 +29,7 @@
 }
 
 .dropdown {
-  display: block;
+  display: none;
   top:100%;
   right: 0;
   margin: 0;
@@ -44,10 +44,17 @@
   z-index: 1;
 }
 
+.dropdown a {
+  color: #00bcd4;
+  text-decoration: none;
+}
 
-.menu:hover  .dropdown{
+.inactive {
+  display: none;
+}
+
+.active {
   display: block;
-  background-color: red;
 }
 
 .card {
