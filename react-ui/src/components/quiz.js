@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Quiz extends React.Component {
+class Quiz extends Component {
   render() {
     return (
     <div className = "card quiz">
