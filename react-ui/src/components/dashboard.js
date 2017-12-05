@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import testData from '../d3/data'
 import chartData from '../d3/linegraph.js'
 
-class Dashboard extends React.Component {
+class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {data: 'loading...'}
