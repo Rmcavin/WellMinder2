@@ -6,13 +6,11 @@ class NavBar extends Component {
     <header className="titleBar">
       <h1 className="title">WellMinder</h1>
       <i className="fa fa-bars menu" aria-hidden="true"></i>
-      <div className = "dropdown">
-        <ul className = "dropdownContents">
+        <ul className = "dropdown">
           <li>Dashboard</li>
           <li>Daily Check In</li>
           <li>User Preferences</li>
         </ul>
-      </div>
     </header>
   )}
 }
