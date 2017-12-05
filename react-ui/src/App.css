@@ -5,11 +5,13 @@
 
 .titleBar {
   position: relative;
+  width: 100%;
   background-color: #00bcd4;
   height: auto;
   color: white;
   padding: 10px;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
 }
@@ -17,15 +19,16 @@
 .title {
   font-size: 1.5em;
   text-align: left;
-  text-indent: 10px;
+  text-indent: 15px;
   color: white;
   flex: 1, 1, auto;
 }
 
 .menu {
   flex: 1, 1, auto;
-  padding-right: 10px;
+  padding-right: 30px;
   cursor: pointer;
+  font-size: 24px;
 }
 
 .dropdown {
@@ -33,6 +36,7 @@
   top:100%;
   right: 0;
   margin: 0;
+  padding: 20px;
   position: absolute;
   background-color: white;
   color: #00bcd4;
@@ -47,6 +51,7 @@
 .dropdown a {
   color: #00bcd4;
   text-decoration: none;
+  font-size: 18px;
 }
 
 .inactive {
