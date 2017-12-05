@@ -89,6 +89,7 @@ g.append("g")
     .style("fill", function(d) {
       return d.color = color(d.id) })
       .style("text-decoration", "none")
+      .style("cursor","pointer")
     .text(function(d) { return d.id })
     .on("click", function(d) {
       let active = d.active ? false : true,

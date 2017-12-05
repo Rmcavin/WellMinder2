@@ -3,7 +3,7 @@
 }
 /*======== NAVIGATION ==========*/
 
-.App-header {
+.titleBar {
   background-color: #00bcd4;
   height: auto;
   color: white;
@@ -13,7 +13,7 @@
   align-items: center;
 }
 
-.App-title {
+.title {
   font-size: 1.5em;
   text-align: left;
   text-indent: 10px;
@@ -24,6 +24,20 @@
 .menu {
   flex: 1, 1, auto;
   padding-right: 10px;
+  cursor: pointer;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.menu:hover .dropdown{
+  display: block;
 }
 
 .card {

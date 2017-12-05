@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import { Route } from 'react-router-dom'
 import Navbar from './components/navbar'
 import Dashboard from './components/dashboard'
 import Landing from './components/landing'
@@ -23,9 +24,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className=“App”>
         <Navbar />
-        <Landing />
+        <Route exact path=‘/’ component={Landing}/>
+        <Route path=‘/dashboard’ component={Dashboard} />
+        <Route path=‘/preferences’ component={Preferences}/>
+        <Route path=‘/checkin’ component={Quiz} />
       </div>
     );
   }

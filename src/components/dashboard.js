@@ -10,23 +10,20 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    console.log(testData);
     this.setState({data: testData});
-    //console.log(this.state.data);
-    //chartData(this.state.data)
   }
 
   componentDidUpdate() {
     if (this.state.data !== 'loading...') {
       chartData(this.state.data)
     }
-
   }
 
   render() {
     return (
     <div className = 'dashboard card'>
-    <svg id="graph" width="960" height="500"></svg>
+    <svg id="graph" width="960" height="500"  viewBox="0 0 960 500"
+  preserveAspectRatio="xMidYMid meet">></svg>
     </div>
   )}
 }
