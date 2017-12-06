@@ -14,14 +14,10 @@ class NavBar extends Component {
       this.setState({active: !this.state.active})
     }
 
-    onSignOut(e) {
-      e.preventDefault();
-      console.log('booyah');
+    onSignOut() {
       firebase.auth().signOut()
         .then((result) => {
-          console.log(result);
-          this.setState({ user: null });
-          console.log(this.state.user);
+          this.props.handleSignOut();
         });
     }
 
@@ -34,7 +30,7 @@ class NavBar extends Component {
           <li><a href="/dashboard">Dashboard</a></li>
           <li><a href="/checkin">Daily Check In</a></li>
           <li><a href="/preferences">User Preferences</a></li>
-          { this.props.isLoggedIn ? <li><a href="#" onClick={this.onSignOut.bind(this)}>Sign out</a></li> : null }
+          { this.props.isLoggedIn ? <li><a href="/" onClick={this.onSignOut.bind(this)}>Sign out</a></li> : null }
         </ul>
     </header>
   )}
