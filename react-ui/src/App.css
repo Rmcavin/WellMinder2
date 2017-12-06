@@ -69,6 +69,11 @@
 
 /* =================== DASHBOARD ===================== */
 
+.dashboard {
+  width: auto;
+  margin: 20px 50px 20px 50px;
+}
+
 .sleepcolor {
   color: #e41a1c;
   stroke: #e41a1c;
@@ -129,6 +134,24 @@
   padding: 15px;
 }
 
+/* ============================= QUIZ ============================= */
+
+.quiz {
+  width: 90%;
+  margin: 20px 50px 20px 50px;
+}
+
+.quizTitle {
+  padding-top: 20px;
+}
+
+.quizSubmit {
+  background-color: #00bcd4;
+  color: white;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
 .quizLabel {
   font-weight: bold;
   display: block;
@@ -137,16 +160,17 @@
 
 .likert {
   display: inline;
+  margin: 10px 10px 0 10px;
 }
 
 .notes {
   display: block;
-  margin: auto;
+  margin: 10px auto 20px auto;
+  width: 200px;
 }
 
-.dashboard {
-  width: auto;
-  margin: 20px 50px 20px 50px;
+.divider {
+  width: 70%;
 }
 
 .prefList {
