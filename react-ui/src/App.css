@@ -181,3 +181,13 @@
 .App-intro {
   font-size: large;
 }
+
+/* =================== LANDING PAGE ===================== */
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}

@@ -9,6 +9,12 @@ import Quiz from './components/quiz'
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { isLoggedIn: false, user: null }
+  }
+
   componentWillMount() {
     const config = {
       apiKey: "AIzaSyBc5KaDNcBS3wWN1kTVtWTGgi2MVjGgZko",
@@ -20,6 +26,10 @@ class App extends Component {
     };
     firebase.initializeApp(config);
     const database = firebase.database();
+  }
+
+  handleAuth(user) {
+    this.setState({ isLoggedIn: true, user:user});
   }
 
   render() {
