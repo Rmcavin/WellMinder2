@@ -17,42 +17,29 @@ class Landing extends Component {
     this.setState({password});
     }
 
-  onLoginPress(e) {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    e.preventDefault();
-    console.log('Sign Up button pushed');
-    firebase.auth().signInWithRedirect(provider)
-    .then((result) => {
-      console.log(result);
-      const user = result.user;
-      this.setState({ user });
-      firebase.auth().onAuthStateChanged(user => {
-        if(user) {
-          <Redirect to='/dashboard' />
-        }
-      });
-    })
-    .catch(() => {
-        this.setState({ error: 'Authentication failed.' });
-    });
-}
-
-  //   onSignupPress(e) {
-  //     const provider = new firebase.auth.GoogleAuthProvider();
-  //     e.preventDefault();
-  //     console.log('Sign Up button pushed');
-  //     firebase.auth().signInWithPopup(provider)
-  //   .then((result) => {
-  //     console.log(result);
-  //     const user = result.user;
-  //     this.setState({
-  //       user
-  //     });
-  //   })
-  //     .catch(() => {
-  //         this.setState({ error: 'Authentication failed.' });
-  //     });
-  // }
+    onSignIn(e) {
+      e.preventDefault();
+      const provider = new firebase.auth.GoogleAuthProvider();
+      const auth = firebase.auth();
+      auth.signInWithPopup(provider)
+      .then((result) => {
+        let user = result.user;
+        this.setState({ user });
+        var credential = result.credential;
+        var operationType = result.operationType;
+        console.log(result);
+        window.location='/dashboard';
+      }).catch((error) => {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          console.log(errorCode, errorMessage, email, credential)
+        });
+  }
 
   render() {
     return (
@@ -70,9 +57,7 @@ class Landing extends Component {
           placeholder="Password"
           value={this.state.password}
           onChange={event => this.onPasswordChange(event.target.value)} />
-        <button
-          onClick={this.onLoginPress.bind(this)}>Log In
-        </button>
+        <div className="g-signin2 buttons" data-onsuccess="onSignIn" data-redirecturi="/dashboard" onClick={this.onSignIn.bind(this)}></div>
       </form>
     </div>
   )}

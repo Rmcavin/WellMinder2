@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
     this.toggleClass = this.toggleClass.bind(this);
     this.state = {
-      active: false
+      active: false,
+      user: ''
     };
   }
     toggleClass() {
       this.setState({active: !this.state.active})
+    }
+
+    onSignOut(e) {
+      e.preventDefault();
+      console.log('booyah');
+      firebase.auth().signOut()
+        .then((result) => {
+          console.log(result);
+          this.setState({ user: null });
+          console.log(this.state.user);
+        });
     }
 
   render() {
@@ -21,6 +34,7 @@ class NavBar extends Component {
           <li><a href="/dashboard">Dashboard</a></li>
           <li><a href="/checkin">Daily Check In</a></li>
           <li><a href="/preferences">User Preferences</a></li>
+          <li><a href="#" onClick={this.onSignOut.bind(this)}>Sign out</a></li>
         </ul>
     </header>
   )}
