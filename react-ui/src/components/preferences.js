@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Preferences extends React.Component {
+class Preferences extends Component {
   render() {
     return (
     <div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router';
 import firebase from 'firebase';
 
 class Landing extends Component {
@@ -21,16 +22,16 @@ class Landing extends Component {
     e.preventDefault();
     console.log('Sign Up button pushed');
     firebase.auth().signInWithRedirect(provider)
-  .then((result) => {
-    console.log(result);
-    const user = result.user;
-    this.setState({ user });
-    firebase.auth().onAuthStateChanged(user => {
-      if(user) {
-        window.location = '/dashboard'; //After successful login, user will be redirected to home.html
-  }
-});
-  })
+    .then((result) => {
+      console.log(result);
+      const user = result.user;
+      this.setState({ user });
+      firebase.auth().onAuthStateChanged(user => {
+        if(user) {
+          <Redirect to='/dashboard' />
+        }
+      });
+    })
     .catch(() => {
         this.setState({ error: 'Authentication failed.' });
     });
@@ -56,7 +57,7 @@ class Landing extends Component {
   render() {
     return (
     <div>
-    <form>
+      <form>
         <input
           type="text"
           name="email"
