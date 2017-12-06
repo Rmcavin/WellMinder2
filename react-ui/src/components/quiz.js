@@ -4,14 +4,44 @@ class Quiz extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { score: '' }
+    this.state = { date: new Date(), sleep: -3, diet: -3, activity: -3, emotional: -3, social: -3, occupational: -3, spiritual: -3, intellectual: -3 }
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = (event) => {
-    this.setState({ score: event.target.value }, () => {
-    console.log(this.state.score)
-    });
+    if(event.target.name === 'sleep'){
+      this.setState({ sleep: parseInt(event.target.value, 10) }, () => {
+        console.log(this.state)
+      });
+    }else if(event.target.name === 'diet'){
+      this.setState({ diet: parseInt(event.target.value, 10) }, () => {
+        console.log(this.state)
+      });
+    }else if(event.target.name === 'activity'){
+      this.setState({ activity: parseInt(event.target.value, 10) }, () => {
+        console.log(this.state)
+      });
+    }else if(event.target.name === 'emotional'){
+      this.setState({ emotional: parseInt(event.target.value, 10) }, () => {
+        console.log(this.state)
+      });
+    }else if(event.target.name === 'social'){
+      this.setState({ social: parseInt(event.target.value, 10) }, () => {
+        console.log(this.state)
+      });
+    }else if(event.target.name === 'occupational'){
+      this.setState({ occupational: parseInt(event.target.value, 10) }, () => {
+        console.log(this.state)
+      });
+    }else if(event.target.name === 'spiritual'){
+      this.setState({ spiritual: parseInt(event.target.value, 10) }, () => {
+        console.log(this.state)
+      });
+    }else if(event.target.name === 'intellectual'){
+      this.setState({ intellectual: parseInt(event.target.value, 10) }, () => {
+        console.log(this.state)
+      });
+    }
   }
 
   render() {
@@ -64,11 +94,11 @@ class Quiz extends Component {
 
         {/* OCCUPATIONAL */}
         <label className="quizLabel">Occupational</label>
-        <input onClick={this.handleClick} className='likert' type="radio" name="Occupational" value="1" />Very Poor
-        <input onClick={this.handleClick} className='likert' type="radio" name="Occupational" value="2" />Poor
-        <input onClick={this.handleClick} className='likert' type="radio" name="Occupational" value="3" />Neutral
-        <input onClick={this.handleClick} className='likert' type="radio" name="Occupational" value="4" />Good
-        <input onClick={this.handleClick} className='likert' type="radio" name="Occupational" value="5" />Very Good
+        <input onClick={this.handleClick} className='likert' type="radio" name="occupational" value="1" />Very Poor
+        <input onClick={this.handleClick} className='likert' type="radio" name="occupational" value="2" />Poor
+        <input onClick={this.handleClick} className='likert' type="radio" name="occupational" value="3" />Neutral
+        <input onClick={this.handleClick} className='likert' type="radio" name="occupational" value="4" />Good
+        <input onClick={this.handleClick} className='likert' type="radio" name="occupational" value="5" />Very Good
         <textarea className='notes' name="occupational" placeholder='Notes' />
 
         {/* SPIRITUAL */}
