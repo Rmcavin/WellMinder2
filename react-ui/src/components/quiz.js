@@ -47,7 +47,7 @@ class Quiz extends Component {
   render() {
     return (
     <div className = "card quiz">
-      <h3 className="quizTitle">Daily Check In</h3>
+      <h3 className="cardTitle">Daily Check In</h3>
       <hr className="divider"></hr>
       <form className = "quizForm">
         {/* SLEEP */}
@@ -120,7 +120,7 @@ class Quiz extends Component {
         <input onClick={this.handleClick} className='likert' type="radio" name="intellectual" value="5" />Very Good
         <textarea className='notes' name="intellectual" placeholder='Notes' />
 
-        <input className="quizSubmit" type="submit" />
+        <input className="formSubmit" type="submit" />
       </form>
 
     </div>

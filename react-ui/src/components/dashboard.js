@@ -33,16 +33,56 @@ class Dashboard extends Component {
     </div>
 
     <section className="tiers">
-    <div>Streak</div>
-    <div>Overall</div>
-    <div className="sleepcolor">Sleep</div>
-    <div className ="dietcolor">Diet</div>
-    <div className="activitycolor">Activity</div>
-    <div className="emotionalcolor">Emotional</div>
-    <div className="socialcolor">Social</div>
-    <div className="occupationalcolor">Occupational</div>
-    <div className="spiritualcolor">Spiritual</div>
-    <div className="intellectualcolor">Intellectual</div>
+    {/*STREAK*/}
+    <div>
+      <h4>Streak</h4>
+      <h6>tier goes here!{/*this.props.user.tiers[streak]*/}</h6>
+    </div>
+    {/*TOTAL*/}
+    <div>
+      <h4>Overall</h4>
+      <h6>tier goes here!{/*this.props.user.tiers[total]*/}</h6>
+    </div>
+    {/*SLEEP*/}
+    <div className="sleepcolor">
+      <h4>Sleep</h4>
+      <h6>tier goes here!{/*this.props.user.tiers[sleep]*/}</h6>
+    </div>
+    {/*DIET*/}
+    <div className ="dietcolor">
+      <h4>Diet</h4>
+      <h6>tier goes here!{/*this.props.user.tiers[diet]*/}</h6>
+    </div>
+    {/*ACTIVITY*/}
+    <div className="activitycolor">
+      <h4>Activity</h4>
+      <h6>tier goes here!{/*this.props.user.tiers[activity]*/}</h6>
+    </div>
+    {/*EMOTIONAL*/}
+    <div className="emotionalcolor">
+      <h4>Emotional</h4>
+      <h6>tier goes here!{/*this.props.user.tiers[emotional]*/}</h6>
+    </div>
+    {/*SOCIAL*/}
+    <div className="socialcolor">
+      <h4>Social</h4>
+      <h6>tier goes here!{/*this.props.user.tiers[social]*/}</h6>
+    </div>
+    {/*OCCUPATIONAL*/}
+    <div className="occupationalcolor">
+      <h4>Occupational</h4>
+      <h6>tier goes here!{/*this.props.user.tiers[occupational]*/}</h6>
+    </div>
+    {/*SPIRITUAL*/}
+    <div className="spiritualcolor">
+      <h4>Spiritual</h4>
+      <h6>tier goes here!{/*this.props.user.tiers[spiritual]*/}</h6>
+    </div>
+    {/*INTELLECTUAL*/}
+    <div className="intellectualcolor">
+      <h4>Intellectual</h4>
+      <h6>tier goes here!{/*this.props.user.tiers[intellectual]*/}</h6>
+    </div>
   </section>
     </main>
   )}

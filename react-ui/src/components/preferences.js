@@ -49,7 +49,10 @@ class Preferences extends Component {
   render() {
     return (
     <div>
-      <form className = "preferences">
+      <form className = "card preferences">
+        <h3 className = "cardTitle">User Preferences</h3>
+        <hr className="divider"></hr>
+        <h5> Aspects you would like to track daily </h5>
         <div className="prefList"><label>Sleep</label><input type="checkbox" name="sleep" onClick={this.onChange} defaultChecked /></div>
         <div className="prefList"><label>Diet</label><input type="checkbox" name="diet" onClick={this.onChange} defaultChecked /></div>
         <div className="prefList"><label>Activity</label><input type="checkbox" name="activity" onClick={this.onChange} defaultChecked /></div>
@@ -58,6 +61,7 @@ class Preferences extends Component {
         <div className="prefList"><label>Occupational</label><input type="checkbox" name="occupational" onClick={this.onChange} defaultChecked /></div>
         <div className="prefList"><label>Spiritual</label><input type="checkbox" name="spiritual" onClick={this.onChange} defaultChecked /></div>
         <div className="prefList"><label>Intellectual</label><input type="checkbox" name="intellectual" onClick={this.onChange} defaultChecked /></div>
+        <input className="formSubmit" type="submit" />
       </form>
     </div>
   )}
