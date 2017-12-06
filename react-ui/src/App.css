@@ -69,6 +69,54 @@
 
 /* =================== DASHBOARD ===================== */
 
+.sleepcolor {
+  color: #e41a1c;
+  stroke: #e41a1c;
+  fill: #e41a1c;
+}
+
+.dietcolor {
+  color: #377eb8;
+  stroke: #377eb8;
+  fill: #377eb8;
+}
+
+.activitycolor {
+  color: #4daf4a;
+  stroke: #4daf4a;
+  fill: #4daf4a;
+}
+
+.emotionalcolor {
+  color: #984ea3;
+  stroke: #984ea3;
+  fill: #984ea3;
+}
+
+.socialcolor {
+  color: #ff7f00;
+  stroke: #ff7f00;
+  fill: #ff7f00;
+}
+
+.occupationalcolor {
+  color: #a6cee3;
+  stroke: #a6cee3;
+  fill: #a6cee3;
+}
+
+.spiritualcolor {
+  color: #a65628;
+  stroke: #a65628;
+  fill: #a65628;
+}
+
+.intellectualcolor {
+  color: #f781bf;
+  stroke: #f781bf;
+  fill: #f781bf;
+}
+
 .tiers {
   display: flex;
   flex-direction: row;
@@ -97,8 +145,8 @@
 }
 
 .dashboard {
-  width: 90%;
-  margin: 20px auto 20px auto;
+  width: auto;
+  margin: 20px 50px 20px 50px;
 }
 
 .prefList {
