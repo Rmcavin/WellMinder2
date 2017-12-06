@@ -21,10 +21,23 @@ class Dashboard extends Component {
 
   render() {
     return (
-    <div className = 'dashboard card'>
+    <main className = 'dashboard card'>
     <svg id="graph" width="960" height="500"  viewBox="0 0 960 500"
   preserveAspectRatio="xMidYMid meet">></svg>
-    </div>
+
+    <section className="tiers">
+    <div>Streak</div>
+    <div>Overall</div>
+    <div>Sleep</div>
+    <div>Diet</div>
+    <div>Activity</div>
+    <div>Emotional</div>
+    <div>Social</div>
+    <div>Occupational</div>
+    <div>Spiritual</div>
+    <div>Intellectual</div>
+    </section>
+    </main>
   )}
 }
 
