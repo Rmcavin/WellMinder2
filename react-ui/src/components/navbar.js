@@ -22,15 +22,26 @@ class NavBar extends Component {
     }
 
   render() {
+    if (this.props.isLoggedIn) {
+      return (
+      <header className="titleBar">
+        <h1 className="title">WellMinder</h1>
+        <div className="menu" onClick={this.toggleClass}><i className="fa fa-bars" aria-hidden="true"></i></div>
+          <ul className = {this.state.active ? "dropdown active" : "dropdown inactive"}>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/checkin">Daily Check In</a></li>
+            <li><a href="/preferences">User Preferences</a></li>
+            <li><a href="/" onClick={this.onSignOut.bind(this)}>Sign out</a></li>
+          </ul>
+      </header>
+      )
+    }
     return (
     <header className="titleBar">
       <h1 className="title">WellMinder</h1>
       <div className="menu" onClick={this.toggleClass}><i className="fa fa-bars" aria-hidden="true"></i></div>
         <ul className = {this.state.active ? "dropdown active" : "dropdown inactive"}>
-          <li><a href="/dashboard">Dashboard</a></li>
-          <li><a href="/checkin">Daily Check In</a></li>
-          <li><a href="/preferences">User Preferences</a></li>
-          { this.props.isLoggedIn ? <li><a href="/" onClick={this.onSignOut.bind(this)}>Sign out</a></li> : null }
+          <li>Please sign in to access all WellMinder features.</li>
         </ul>
     </header>
   )}
