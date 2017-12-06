@@ -5,8 +5,10 @@ import firebase from 'firebase';
 class Landing extends Component {
   constructor(props) {
     super(props);
+    console.log("Landing props:", props);
+    this.onSignIn = this.onSignIn.bind(this);
 
-    this.state = { email: '', password: '', user: '', error: '' }
+    this.state = { email: '', password: '', error: '' }
   }
 
   onEmailChange(email) {
@@ -23,12 +25,7 @@ class Landing extends Component {
       const auth = firebase.auth();
       auth.signInWithPopup(provider)
       .then((result) => {
-        let user = result.user;
-        this.setState({ user });
-        var credential = result.credential;
-        var operationType = result.operationType;
-        console.log(result);
-        window.location='/dashboard';
+        this.props.handleAuth(result);
       }).catch((error) => {
           // Handle Errors here.
           var errorCode = error.code;
@@ -57,7 +54,7 @@ class Landing extends Component {
           placeholder="Password"
           value={this.state.password}
           onChange={event => this.onPasswordChange(event.target.value)} />
-        <div className="g-signin2 buttons" data-onsuccess="onSignIn" data-redirecturi="/dashboard" onClick={this.onSignIn.bind(this)}></div>
+        <div className="g-signin2 buttons" data-onsuccess="onSignIn" onClick={this.onSignIn}></div>
       </form>
     </div>
   )}

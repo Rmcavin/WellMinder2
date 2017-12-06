@@ -34,7 +34,7 @@ class NavBar extends Component {
           <li><a href="/dashboard">Dashboard</a></li>
           <li><a href="/checkin">Daily Check In</a></li>
           <li><a href="/preferences">User Preferences</a></li>
-          <li><a href="#" onClick={this.onSignOut.bind(this)}>Sign out</a></li>
+          { this.props.isLoggedIn ? <li><a href="#" onClick={this.onSignOut.bind(this)}>Sign out</a></li> : null }
         </ul>
     </header>
   )}
