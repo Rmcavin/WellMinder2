@@ -6,11 +6,16 @@ import chartData from '../d3/linegraph.js'
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = {data: 'loading...'}
+    this.state = {data: 'loading...',
+                  width: null,
+                  height: null}
   }
 
   componentDidMount() {
     this.setState({data: testData});
+    let width = .9 * window.innerWidth;
+    let height = .5 * width;
+    this.setState({width: width, height: height})
   }
 
   componentDidUpdate() {
@@ -20,23 +25,25 @@ class Dashboard extends Component {
   }
 
   render() {
+
     return (
     <main className = 'dashboard card'>
-    <svg id="graph" width="960" height="500"  viewBox="0 0 960 500"
-  preserveAspectRatio="xMidYMid meet">></svg>
+    <div className = "graphContainer">
+    <svg id="graph" width={this.state.width} height={this.state.height}></svg>
+    </div>
 
     <section className="tiers">
     <div>Streak</div>
     <div>Overall</div>
-    <div>Sleep</div>
-    <div>Diet</div>
-    <div>Activity</div>
-    <div>Emotional</div>
-    <div>Social</div>
-    <div>Occupational</div>
-    <div>Spiritual</div>
-    <div>Intellectual</div>
-    </section>
+    <div className="sleepcolor">Sleep</div>
+    <div className ="dietcolor">Diet</div>
+    <div className="activitycolor">Activity</div>
+    <div className="emotionalcolor">Emotional</div>
+    <div className="socialcolor">Social</div>
+    <div className="occupationalcolor">Occupational</div>
+    <div className="spiritualcolor">Spiritual</div>
+    <div className="intellectualcolor">Intellectual</div>
+  </section>
     </main>
   )}
 }

@@ -73,10 +73,10 @@ function tierCalc(scores) {
   return userTiers;
 }
 
-let sampleQuiz = {date: "2018-02-01T06:00:00.000Z", sleep: 3, diet: 1, activity: 3, emotional: 3, social: 4, occupational: 2, spiritual: 4, intellectual: 3}
-let sampleScore = {date: "2018-01-31T06:00:00.000Z", total: 0, streak: 1, sleep: 13, diet: 11, activity: 13, emotional: 13, social: 14, occupational: 12, spiritual: 14, intellectual: 13}
+let todayQuiz = {date: "2018-02-01T06:00:00.000Z", sleep: 3, diet: 1, activity: 3, emotional: 3, social: 4, occupational: 2, spiritual: 4, intellectual: 3}
+let existingScore = {date: "2018-01-31T06:00:00.000Z", total: 0, streak: 1, sleep: 13, diet: 11, activity: 13, emotional: 13, social: 14, occupational: 12, spiritual: 14, intellectual: 13}
 
-let newScores = scoreCalc(sampleQuiz, sampleScore)
+let newScores = scoreCalc(todayQuiz, existingScore)
 console.log('todays scores', newScores);
 let newTiers = tierCalc(newScores);
 console.log('todays tiers', newTiers);

@@ -69,7 +69,8 @@ g.append("g")
     .attr("class", "line")
     .attr("d", function(d) { return line(d.values); })
     .attr("id", function(d) { return d.id})
-    .style("stroke", function(d) {return color(d.id); })
+    .attr("class", function(d) { return d.id + "color"})
+    //.style("stroke", function(d) {return color(d.id); })
     .style("fill", "none")
 
   let count = -1;
@@ -84,13 +85,13 @@ g.append("g")
     })
     .attr("x", function(d,i) { return (legendSpace/2) + (count+=1) * legendSpace })
     .attr("y", height + (margin.bottom/2) + 5)
-    .attr("class", "legend")
     .style("padding", "15px")
-    .style("fill", function(d) {
-      return d.color = color(d.id) })
-      .style("text-decoration", "none")
-      .style("cursor","pointer")
-    .text(function(d) { return d.id })
+    .attr("class", function(d) {
+      return "legend " + d.id + "color" })
+    .style("text-decoration", "none")
+    .style("cursor","pointer")
+    .attr('font-family', 'FontAwesome')
+    .text(function(d) { return '\uf111'})
     .on("click", function(d) {
       let active = d.active ? false : true,
       newOpacity = active ? 0 : 1;
