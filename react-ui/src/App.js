@@ -12,6 +12,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.handleAuth = this.handleAuth.bind(this);
+    this.handleSignOut = this.handleSignOut.bind(this);
 
     this.state = { isLoggedIn: false, user: null }
   }
@@ -37,7 +38,11 @@ class App extends Component {
 
   handleAuth(user) {
     console.log("handleAuth", user);
-    this.setState({ isLoggedIn: true, user:user});
+    this.setState({ isLoggedIn: true, user: user});
+  }
+
+  handleSignOut(){
+    this.setState({ isLoggedIn: false, user: null });
   }
 
   writeUserData(data) {
@@ -47,7 +52,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Navbar isLoggedIn={this.state.isLoggedIn} />
+        <Navbar isLoggedIn={this.state.isLoggedIn} handleSignOut={this.handleSignOut} />
         { !this.state.isLoggedIn ? <Route exact path='/' render={(props) => <Landing handleAuth={this.handleAuth} {...props}/>} /> : <Redirect to='/dashboard' /> }
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/preferences' component={Preferences} />
