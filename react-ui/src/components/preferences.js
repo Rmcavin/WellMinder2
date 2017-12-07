@@ -3,51 +3,54 @@ import React, { Component } from 'react';
 class Preferences extends Component {
   constructor(props) {
     super(props);
-    this.state = { date: new Date(), sleep: true, diet: true, activity: true, emotional: true, social: true, occupational: true, spiritual: true, intellectual: true }
+    //this.state = {user:null}//{date: new Date(), sleep: true, diet: true, activity: true, emotional: true, social: true, occupational: true, spiritual: true, intellectual: true }
     this.onChange = this.onChange.bind(this);
   }
+
+//   componentWillReceiveProps(nextProps) {
+//     console.log('what is next props',nextProps);
+//   this.setState({ data: nextProps.user });
+//   console.log('prefs state update', this.state);
+// }
 
   onChange = (event) => {
     if(event.target.name === 'sleep'){
       this.setState({ sleep: !event.target.value }, () => {
-        console.log(this.state)
+        //console.log(this.state)
       });
     }else if(event.target.name === 'diet'){
       this.setState({ diet: !event.target.value }, () => {
-        console.log(this.state)
+        //console.log(this.state)
       });
     }else if(event.target.name === 'activity'){
       this.setState({ activity: !event.target.value }, () => {
-        console.log(this.state)
+        //console.log(this.state)
       });
     }else if(event.target.name === 'emotional'){
       this.setState({ emotional: !event.target.value }, () => {
-        console.log(this.state)
+        //console.log(this.state)
       });
     }else if(event.target.name === 'social'){
       this.setState({ social: !event.target.value }, () => {
-        console.log(this.state)
+        //console.log(this.state)
       });
     }else if(event.target.name === 'occupational'){
       this.setState({ occupational: !event.target.value }, () => {
-        console.log(this.state)
+        //console.log(this.state)
       });
     }else if(event.target.name === 'spiritual'){
       this.setState({ spiritual: !event.target.value }, () => {
-        console.log(this.state)
+        //console.log(this.state)
       });
     }else if(event.target.name === 'intellectual'){
       this.setState({ intellectual: !event.target.value }, () => {
-        console.log(this.state)
+        //console.log(this.state)
       });
     }
   }
 
-
-
-
   render() {
-    console.log(this.props);
+    console.log('prefs state', this.state)
     return (
     <div>
       <form className = "card preferences">

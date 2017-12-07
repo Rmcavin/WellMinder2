@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, Switch } from 'react-router-dom'
 import Navbar from './components/navbar'
 import Dashboard from './components/dashboard'
 import Landing from './components/landing'
@@ -15,7 +15,6 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getSnap = this.getSnap.bind(this);
     this.handleSignOut = this.handleSignOut.bind(this);
-
     this.state = { isLoggedIn: false, user: null }
   }
 
@@ -39,9 +38,9 @@ class App extends Component {
     //writeUserData(this.state)
   }
 
+  //UPDATE USER STATE WITH SERVER DATA
   getSnap(snap) {
     let user = this.state.user;
-
     if (!snap.val()) {
       user.userData = {
         preferences: {"sleep": true, "diet": true, "activity": true, "emotional": true, "social": true, "occupational": true, "spiritual": true, "intellectual": true}
@@ -56,6 +55,7 @@ class App extends Component {
     console.log('updated state from server', this.state)
   }
 
+  //GET THE DATA SNAPSHOT FROM THE SERVER
   handleAuth(user) {
     this.setState({ isLoggedIn:true, user:user}, () => {
       let userId = firebase.auth().currentUser.uid;
@@ -64,13 +64,9 @@ class App extends Component {
   }
 
   handleSubmit(data) {
-    //event.preventDefault();
-    //this.state.user.quizData.push(data);
-    //this.setState({user: updates)
-    console.log('app level state!!',this.state);
-    console.log('the data', data);
+    console.log('user at the time of quiz',this.state.user)
+    console.log('user quiz data at app', data)
   }
-
 
   handleSignOut(){
     this.setState({ isLoggedIn: false, user: null });
@@ -79,12 +75,13 @@ class App extends Component {
   writeUserData(data) {
     firebase.database().ref('users/' + this.state.user.user.uid).set(data);
   }
+  //  { !this.state.isLoggedIn ? <Route exact path='/' render={(props) => <Landing handleAuth={this.handleAuth} user={this.state.user}{...props}/>} /> : <Redirect to='/dashboard' /> }
 
   render() {
     return (
       <div className='App'>
         <Navbar isLoggedIn={this.state.isLoggedIn} handleSignOut={this.handleSignOut}/>
-        { !this.state.isLoggedIn ? <Route exact path='/' render={(props) => <Landing handleAuth={this.handleAuth} user={this.state.user}{...props}/>} /> : <Redirect to='/dashboard' /> }
+        <Route exact path='/' render={(props) => <Landing {...props} handleAuth={this.handleAuth} user={this.state.user}/>}/>
         <Route path='/dashboard' render={(props) => <Dashboard {...props} user={this.state.user}/>}/>
         <Route path='/preferences' render={(props) => <Preferences {...props} user={this.state.user}/>}/>
         <Route path='/checkin' render={(props) => <Quiz {...props} quizUpdate={this.handleSubmit}/>}/>

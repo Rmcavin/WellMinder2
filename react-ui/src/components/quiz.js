@@ -4,7 +4,7 @@ class Quiz extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { date: new Date(), sleep: -3, diet: -3, activity: -3, emotional: -3, social: -3, occupational: -3, spiritual: -3, intellectual: -3 }
+    this.state = { date: new Date(), sleep: null, diet: null, activity: null, emotional: null, social: null, occupational: null, spiritual: null, intellectual: null }
     this.handleClick = this.handleClick.bind(this);
     this.formHandler = this.formHandler.bind(this);
   }

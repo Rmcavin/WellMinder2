@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
+import {Redirect} from 'react-router-dom'
 import firebase from 'firebase';
 
 class Landing extends Component {
@@ -65,6 +65,12 @@ class Landing extends Component {
   }
 
   render() {
+
+    if (this.props.user) {
+      return (
+        <Redirect to='/dashboard'/>
+      )
+    }
     return (
     <div>
       <form>
