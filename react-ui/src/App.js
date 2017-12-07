@@ -40,17 +40,16 @@ class App extends Component {
   componentDidUpdate() {
     console.log("State from app-level component:", this.state.user);
     console.log("userId",this.state.user.user.uid)
-    //db needs to update now
-    //writeUserData(this.state)
+    if (this.state.user.userData) {
+      this.writeUserData()
+    }
   }
 
-  // writeUserData(userData) {
-  //   console.log('WRITE USER DATA');
-  //   let userId = firebase.auth().currentUser.uid;
-  //   if (this.state.user) {
-  //     firebase.database().ref('users/' + this.state.user.uid).set(user.userData);
-  //   }
-  // }
+  writeUserData() {
+    let userId = firebase.auth().currentUser.uid;
+    firebase.database().ref('users/' + userId).update(user.userData);
+    }
+  
 
   //UPDATE USER STATE WITH SERVER DATA
   getSnap(snap) {

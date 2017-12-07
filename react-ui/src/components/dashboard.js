@@ -33,9 +33,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    if (this.props.user.userData){
-      console.log('DASHBOARD PROPS', this.props.user.userData.tiers.sleep);
-    }
+    
     return (
     <main className = 'dashboard card'>
     <div className = "graphContainer">
