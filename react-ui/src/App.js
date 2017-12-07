@@ -38,17 +38,27 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    console.log("State from app-level component:", this.state);
+    console.log("State from app-level component:", this.state.user);
     console.log("userId",this.state.user.user.uid)
     //db needs to update now
     //writeUserData(this.state)
   }
+
+  // writeUserData(userData) {
+  //   console.log('WRITE USER DATA');
+  //   let userId = firebase.auth().currentUser.uid;
+  //   if (this.state.user) {
+  //     firebase.database().ref('users/' + this.state.user.uid).set(user.userData);
+  //   }
+  // }
 
   //UPDATE USER STATE WITH SERVER DATA
   getSnap(snap) {
     let user = this.state.user;
     if (!snap.val()) {
       user.userData = {
+        currentScores: {"streak": 0, "total": 0, "sleep": 0, "diet": 0, "activity": 0, "emotional": 0, "social": 0, "occupational": 0, "spiritual": 0, "intellectual": 0},
+        tiers: {"streak": "level one", "total": "level one", "sleep": "level one", "diet": "level one", "activity": "level one", "emotional": "level one", "social": "level one", "occupational": "level one", "spiritual": "level one", "intellectual": "level one"},
         preferences: {"sleep": true, "diet": true, "activity": true, "emotional": true, "social": true, "occupational": true, "spiritual": true, "intellectual": true}
       }
       let userId = firebase.auth().currentUser.uid;
@@ -82,11 +92,6 @@ class App extends Component {
     console.log(prefs);
     this.setState({ prefs: prefs });
   }
-
-  writeUserData(data) {
-    firebase.database().ref('users/' + this.state.user.user.uid).set(data);
-  }
-  //  { !this.state.isLoggedIn ? <Route exact path='/' render={(props) => <Landing handleAuth={this.handleAuth} user={this.state.user}{...props}/>} /> : <Redirect to='/dashboard' /> }
 
   render() {
     return (
