@@ -10,10 +10,6 @@ class Quiz extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.formHandler = this.formHandler.bind(this);
   }
-  formHandler(e) {
-    e.preventDefault();
-    this.props.quizUpdate(this.state)
-  }
 
   handleClick = (event) => {
     if(event.target.name === 'sleep'){
@@ -155,7 +151,7 @@ class Quiz extends Component {
         <textarea className='notes' name="intellectual" placeholder='Notes' /></frag>
         : null }
 
-        <button className="formSubmit" onClick={this.formHandler}>Submit</button>
+        <Link to="/dashboard"><button className="formSubmit" onClick={() => { this.props.quizUpdate(this.state) }}>Submit</button></Link>
       </form>
 
     </div>
