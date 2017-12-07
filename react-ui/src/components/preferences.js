@@ -3,51 +3,54 @@ import React, { Component } from 'react';
 class Preferences extends Component {
   constructor(props) {
     super(props);
-    console.log("Pref props", props)
-    this.state = { date: new Date(), sleep: true, diet: true, activity: true, emotional: true, social: true, occupational: true, spiritual: true, intellectual: true }
+    //this.state = {user:null}//{date: new Date(), sleep: true, diet: true, activity: true, emotional: true, social: true, occupational: true, spiritual: true, intellectual: true }
     this.onChange = this.onChange.bind(this);
   }
 
+//   componentWillReceiveProps(nextProps) {
+//     console.log('what is next props',nextProps);
+//   this.setState({ data: nextProps.user });
+//   console.log('prefs state update', this.state);
+// }
+
   onChange = (event) => {
     if(event.target.name === 'sleep'){
-      this.setState({ sleep: !this.state.sleep }, () => {
-        console.log(this.state)
+      this.setState({ sleep: !event.target.value }, () => {
+        //console.log(this.state)
       });
     }else if(event.target.name === 'diet'){
-      this.setState({ diet: !this.state.diet }, () => {
-        console.log(this.state)
+      this.setState({ diet: !event.target.value }, () => {
+        //console.log(this.state)
       });
     }else if(event.target.name === 'activity'){
-      this.setState({ activity: !this.state.activity }, () => {
-        console.log(this.state)
+      this.setState({ activity: !event.target.value }, () => {
+        //console.log(this.state)
       });
     }else if(event.target.name === 'emotional'){
-      this.setState({ emotional: !this.state.emotional }, () => {
-        console.log(this.state)
+      this.setState({ emotional: !event.target.value }, () => {
+        //console.log(this.state)
       });
     }else if(event.target.name === 'social'){
-      this.setState({ social: !this.state.social }, () => {
-        console.log(this.state)
+      this.setState({ social: !event.target.value }, () => {
+        //console.log(this.state)
       });
     }else if(event.target.name === 'occupational'){
-      this.setState({ occupational: !this.state.occupational }, () => {
-        console.log(this.state)
+      this.setState({ occupational: !event.target.value }, () => {
+        //console.log(this.state)
       });
     }else if(event.target.name === 'spiritual'){
-      this.setState({ spiritual: !this.state.spiritual }, () => {
-        console.log(this.state)
+      this.setState({ spiritual: !event.target.value }, () => {
+        //console.log(this.state)
       });
     }else if(event.target.name === 'intellectual'){
-      this.setState({ intellectual: !this.state.intellectual }, () => {
-        console.log(this.state)
+      this.setState({ intellectual: !event.target.value }, () => {
+        //console.log(this.state)
       });
     }
   }
 
-
-
-
   render() {
+    console.log('prefs state', this.state)
     return (
     <div>
       <form className = "card preferences">

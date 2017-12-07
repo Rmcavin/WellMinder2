@@ -17,6 +17,7 @@ class NavBar extends Component {
     }
 
     onSignOut() {
+      console.log('is this happening?');
       firebase.auth().signOut()
         .then((result) => {
           this.props.handleSignOut(result);

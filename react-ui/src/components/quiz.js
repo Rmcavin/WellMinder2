@@ -4,42 +4,47 @@ class Quiz extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { date: new Date(), sleep: -3, diet: -3, activity: -3, emotional: -3, social: -3, occupational: -3, spiritual: -3, intellectual: -3 }
+    this.state = { date: new Date(), sleep: null, diet: null, activity: null, emotional: null, social: null, occupational: null, spiritual: null, intellectual: null }
     this.handleClick = this.handleClick.bind(this);
+    this.formHandler = this.formHandler.bind(this);
+  }
+  formHandler(e) {
+    e.preventDefault();
+    this.props.quizUpdate(this.state)
   }
 
   handleClick = (event) => {
     if(event.target.name === 'sleep'){
       this.setState({ sleep: parseInt(event.target.value, 10) }, () => {
-        console.log(this.state)
+        //console.log(this.state)
       });
     }else if(event.target.name === 'diet'){
       this.setState({ diet: parseInt(event.target.value, 10) }, () => {
-        console.log(this.state)
+        // console.log(this.state)
       });
     }else if(event.target.name === 'activity'){
       this.setState({ activity: parseInt(event.target.value, 10) }, () => {
-        console.log(this.state)
+        // console.log(this.state)
       });
     }else if(event.target.name === 'emotional'){
       this.setState({ emotional: parseInt(event.target.value, 10) }, () => {
-        console.log(this.state)
+        // console.log(this.state)
       });
     }else if(event.target.name === 'social'){
       this.setState({ social: parseInt(event.target.value, 10) }, () => {
-        console.log(this.state)
+        // console.log(this.state)
       });
     }else if(event.target.name === 'occupational'){
       this.setState({ occupational: parseInt(event.target.value, 10) }, () => {
-        console.log(this.state)
+        // console.log(this.state)
       });
     }else if(event.target.name === 'spiritual'){
       this.setState({ spiritual: parseInt(event.target.value, 10) }, () => {
-        console.log(this.state)
+        // console.log(this.state)
       });
     }else if(event.target.name === 'intellectual'){
       this.setState({ intellectual: parseInt(event.target.value, 10) }, () => {
-        console.log(this.state)
+        // console.log(this.state)
       });
     }
   }
@@ -120,7 +125,7 @@ class Quiz extends Component {
         <input onClick={this.handleClick} className='likert' type="radio" name="intellectual" value="5" />Very Good
         <textarea className='notes' name="intellectual" placeholder='Notes' />
 
-        <input className="formSubmit" type="submit" />
+        <button className="formSubmit" onClick={this.formHandler}>Submit</button>
       </form>
 
     </div>

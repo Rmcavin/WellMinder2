@@ -25,7 +25,6 @@ class Dashboard extends Component {
   }
 
   render() {
-
     return (
     <main className = 'dashboard card'>
     <div className = "graphContainer">
