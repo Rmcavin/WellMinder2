@@ -47,9 +47,29 @@ class App extends Component {
 
   writeUserData() {
     let userId = firebase.auth().currentUser.uid;
-    firebase.database().ref('users/' + userId).update(user.userData);
-    }
-  
+    // let updates = {}
+    // if (this.state.user.userData.preferences) {
+    //   updates.preferences = this.state.user.userData.preferences;
+    // }
+    // if (this.state.user.userData.tiers) {
+    //   updates.tiers = this.state.user.userData.tiers;
+    // }
+    // if (this.state.user.userData.currentScores) {
+    //   updates.currentScores = this.state.user.userData.currentScores;
+    // }
+    // if (this.state.user.userData.quizData) {
+    //   updates.quizData = this.state.user.userData.quizData;
+    // }
+    // let pairs = Object.entries(updates)
+    // console.log('THE PAIRS',pairs)
+
+    firebase.database().ref('users/' + userId).update({
+      preferences: this.state.user.userData.preferences,
+      tiers: this.state.user.userData.tiers,
+      currentScores: this.state.user.userData.currentScores,
+      quizData: this.state.user.userData.quizData});
+}
+
 
   //UPDATE USER STATE WITH SERVER DATA
   getSnap(snap) {
@@ -58,7 +78,8 @@ class App extends Component {
       user.userData = {
         currentScores: {"streak": 0, "total": 0, "sleep": 0, "diet": 0, "activity": 0, "emotional": 0, "social": 0, "occupational": 0, "spiritual": 0, "intellectual": 0},
         tiers: {"streak": "level one", "total": "level one", "sleep": "level one", "diet": "level one", "activity": "level one", "emotional": "level one", "social": "level one", "occupational": "level one", "spiritual": "level one", "intellectual": "level one"},
-        preferences: {"sleep": true, "diet": true, "activity": true, "emotional": true, "social": true, "occupational": true, "spiritual": true, "intellectual": true}
+        preferences: {"sleep": true, "diet": true, "activity": true, "emotional": true, "social": true, "occupational": true, "spiritual": true, "intellectual": true},
+        quizData: {date: null, sleep: 0, diet: 0, activity: 0, emotional: 0, social: 0, occupational: 0, spiritual: 0, intellectual: 0},
       }
       let userId = firebase.auth().currentUser.uid;
       firebase.database().ref('users/' + userId).set(user.userData);

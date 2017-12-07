@@ -2,6 +2,13 @@ import * as d3 from 'd3';
 
 function chartData(testData) {
 
+  console.log('is array?' , Array.isArray(testData));
+
+  if (testData.length <= 1) {
+    console.log('AM I IN HERE?!');
+    return 'no data to graph!'
+  }
+
   let aspects = ['sleep', 'diet', 'activity', 'emotional', 'social', 'occupational', 'spiritual', 'intellectual']
 //======================= PROCESS DATA TO PROPER FORMAT =========================
   let inputData = aspects.map(function(id) {

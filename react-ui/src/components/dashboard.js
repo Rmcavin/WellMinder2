@@ -27,13 +27,14 @@ class Dashboard extends Component {
 
   componentDidUpdate() {
     console.log('DASHBOARD STATE UPDATE', this.state);
-    if (this.state.data !== 'loading...') {
-      //chartData(this.state.data)
+    if (this.state.data.quizData) {
+      console.log('inputData', this.state.data.quizData);
+      chartData(this.state.data.quizData)
     }
   }
 
   render() {
-    
+
     return (
     <main className = 'dashboard card'>
     <div className = "graphContainer">
