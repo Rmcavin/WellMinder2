@@ -17,10 +17,9 @@ class NavBar extends Component {
     }
 
     onSignOut() {
-      console.log('is this happening?');
       firebase.auth().signOut()
         .then((result) => {
-          this.props.handleSignOut(result);
+          this.props.handleSignOut();
         });
     }
 
@@ -34,7 +33,7 @@ class NavBar extends Component {
             <li><Link to="/dashboard">Dashboard</Link></li>
             <li><Link to="/checkin">Daily Check In</Link></li>
             <li><Link to="/preferences">User Preferences</Link></li>
-            <li><Link to="/" onClick={() => { this.onSignOut }}>Sign out</Link></li>
+            <li><Link to="#" onClick={this.onSignOut}>Sign out</Link></li>
           </ul>
       </header>
       )
