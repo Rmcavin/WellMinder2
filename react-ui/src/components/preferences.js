@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 class Preferences extends Component {
   constructor(props) {
     super(props);
-    console.log("Prefs props:", props);
     this.state = this.props.user.userData.preferences;
     this.onChange = this.onChange.bind(this);
   }
@@ -46,7 +45,6 @@ class Preferences extends Component {
   }
 
   render() {
-    console.log('prefs state', this.state)
     return (
     <div>
       <form className = "card preferences">

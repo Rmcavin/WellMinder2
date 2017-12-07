@@ -24,13 +24,11 @@ class Landing extends Component {
     const { email, password } = this.state;
       firebase.auth().signInWithEmailAndPassword(email, password)
         .then((result) => {
-          console.log("Sign in:", result)
           this.props.handleAuth(result);
         }).catch(() => {
             //Login was not successful, let's create a new account
             firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then((result) => {
-                  console.log("Create user:", result)
                   this.props.handleAuth(result);
                 }).catch((error) => {
                   // Handle Errors here.
@@ -65,8 +63,7 @@ class Landing extends Component {
   }
 
   render() {
-
-    if (this.props.user) {
+    if (this.props.isLoggedIn) {
       return (
         <Redirect to='/dashboard'/>
       )
