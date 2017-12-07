@@ -80,15 +80,16 @@ class App extends Component {
 
   handleSubmit(data) {
     let quizData = [];
-    let q = this.state.user.userData;
-    if(q.quizData){
+    let q = this.state.user;
+    if(q.userData.quizData){
       quizData.push(data)
     }else{
-      q["quizData"] = [data];
+      q.userData.quizData = [data];
     }
-    console.log(q);
-    console.log('user at the time of quiz',this.state.user)
-    console.log('user quiz data at app', data)
+    this.setState({ user: q });
+    console.log(q.userData);
+    // console.log('user at the time of quiz',this.state.user)
+    // console.log('user quiz data at app', data)
   }
 
   handleSignOut(){
