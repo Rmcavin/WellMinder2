@@ -46,6 +46,7 @@ class Quiz extends Component {
   }
 
   render() {
+    console.log(this.props.quizUpdate)
     return (
     <div className = "card quiz">
       <h3 className="cardTitle">Daily Check In</h3>
@@ -121,7 +122,7 @@ class Quiz extends Component {
         <input onClick={this.handleClick} className='likert' type="radio" name="intellectual" value="5" />Very Good
         <textarea className='notes' name="intellectual" placeholder='Notes' />
 
-        <input className="formSubmit" onClick={this.props.handleSubmit} type="submit" />
+        <input className="formSubmit" type="submit" onClick={this.props.quizUpdate(this.state)}/>
       </form>
 
     </div>

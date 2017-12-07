@@ -31,6 +31,7 @@ class App extends Component {
 
   componentDidUpdate() {
     console.log("State from app-level component:", this.state);
+    //db needs to update now
   }
 
   handleAuth(user) {
@@ -38,9 +39,12 @@ class App extends Component {
     this.setState({ isLoggedIn: true, user:user});
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(this.state);
+  handleSubmit = (data) => {
+    //event.preventDefault();
+    //let updates = {quizData: data}
+    //this.setState({user: updates)
+    console.log('app level state!!',this.state);
+    console.log('the data', data);
   }
 
   render() {
@@ -50,7 +54,7 @@ class App extends Component {
         { !this.state.isLoggedIn ? <Route exact path='/' render={(props) => <Landing handleAuth={this.handleAuth} {...props}/>} /> : <Redirect to='/dashboard' /> }
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/preferences' component={Preferences} />
-        <Route path='/checkin' component={Quiz} onClick={this.props.handleSubmit} />
+        <Route path='/checkin' render={(props) => <Quiz {...props} quizUpdate={this.handleSubmit}/>}/>
       </div>
     );
   }
