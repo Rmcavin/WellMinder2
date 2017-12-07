@@ -105,6 +105,7 @@ class App extends Component {
   handleSubmit(data) {
     let quizData = [];
     let q = this.state.user;
+    
     if(q.userData.quizData){
       quizData.push(data)
     }else{
