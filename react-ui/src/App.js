@@ -108,9 +108,6 @@ class App extends Component {
       q.userData.quizData = [data];
     }
     this.setState({ user: q });
-    console.log(q.userData);
-    // console.log('user at the time of quiz',this.state.user)
-    // console.log('user quiz data at app', data)
   }
 
   handleSignOut(){
