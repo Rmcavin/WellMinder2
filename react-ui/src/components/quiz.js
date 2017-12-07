@@ -5,7 +5,6 @@ class Quiz extends Component {
 
   constructor(props) {
     super(props);
-    console.log("Quiz props:", props);
     this.state = { date: new Date(), sleep: 0, diet: 0, activity: 0, emotional: 0, social: 0, occupational: 0, spiritual: 0, intellectual: 0 }
     this.handleClick = this.handleClick.bind(this);
   }
