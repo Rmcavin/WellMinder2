@@ -6,8 +6,12 @@ class Quiz extends Component {
     super(props);
     this.state = { date: new Date(), sleep: -3, diet: -3, activity: -3, emotional: -3, social: -3, occupational: -3, spiritual: -3, intellectual: -3 }
     this.handleClick = this.handleClick.bind(this);
+    this.formHandler = this.formHandler.bind(this);
   }
-
+  formHandler(e) {
+    e.preventDefault();
+    this.props.quizUpdate(this.state)
+  }
 
   handleClick = (event) => {
     if(event.target.name === 'sleep'){
@@ -46,7 +50,6 @@ class Quiz extends Component {
   }
 
   render() {
-    console.log(this.props.quizUpdate)
     return (
     <div className = "card quiz">
       <h3 className="cardTitle">Daily Check In</h3>
@@ -122,7 +125,7 @@ class Quiz extends Component {
         <input onClick={this.handleClick} className='likert' type="radio" name="intellectual" value="5" />Very Good
         <textarea className='notes' name="intellectual" placeholder='Notes' />
 
-        <input className="formSubmit" type="submit" onClick={this.props.quizUpdate(this.state)}/>
+        <button className="formSubmit" onClick={this.formHandler}>Submit</button>
       </form>
 
     </div>
