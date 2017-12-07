@@ -40,11 +40,10 @@ class App extends Component {
   }
 
   handleAuth(user) {
-    this.setState({ isLoggedIn: true, user: user.user});
+    this.setState({ isLoggedIn: true, user: user});
   }
 
   handleSignOut(result){
-    console.log('******handleSignOut******');
     this.setState({ isLoggedIn: false, user: result });
   }
 
