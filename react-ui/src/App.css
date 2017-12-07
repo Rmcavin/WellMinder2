@@ -192,9 +192,14 @@
 /* =================== LANDING PAGE ===================== */
 .buttons {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 10px;
+}
+
+.loginInput {
+  height: 30px;
+  width: 175px;
   margin: 5px;
 }

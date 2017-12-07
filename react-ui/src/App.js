@@ -15,7 +15,9 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getSnap = this.getSnap.bind(this);
     this.handleSignOut = this.handleSignOut.bind(this);
-    this.state = { isLoggedIn: false, user: null }
+    this.handlePreferences = this.handlePreferences.bind(this);
+
+    this.state = { isLoggedIn: false, user: null, prefs: null }
   }
 
   componentWillMount() {
@@ -29,6 +31,10 @@ class App extends Component {
     };
     firebase.initializeApp(config);
     const database = firebase.database();
+  }
+
+  componentDidMount() {
+    console.log("Component mounted state", this.state);
   }
 
   componentDidUpdate() {
@@ -68,8 +74,13 @@ class App extends Component {
     console.log('user quiz data at app', data)
   }
 
-  handleSignOut(){
-    this.setState({ isLoggedIn: false, user: null });
+  handleSignOut(result){
+    this.setState({ isLoggedIn: false, user: result });
+  }
+
+  handlePreferences(prefs) {
+    console.log(prefs);
+    this.setState({ prefs: prefs });
   }
 
   writeUserData(data) {
