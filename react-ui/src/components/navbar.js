@@ -43,7 +43,7 @@ class NavBar extends Component {
       <h1 className="title">WellMinder</h1>
       <div className="menu" onClick={this.toggleClass}><i className="fa fa-bars" aria-hidden="true"></i></div>
         <ul className = {this.state.active ? "dropdown active" : "dropdown inactive"}>
-          <li>Please sign in to access all WellMinder features.</li>
+          <li><Link to="/">Please sign in to access all WellMinder features.</Link></li>
         </ul>
     </header>
   )}
