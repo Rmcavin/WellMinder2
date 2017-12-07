@@ -12,7 +12,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.handleAuth = this.handleAuth.bind(this);
-
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = { isLoggedIn: false, user: null }
   }
 
@@ -38,6 +38,11 @@ class App extends Component {
     this.setState({ isLoggedIn: true, user:user});
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state);
+  }
+
   render() {
     return (
       <div className='App'>
@@ -45,7 +50,7 @@ class App extends Component {
         { !this.state.isLoggedIn ? <Route exact path='/' render={(props) => <Landing handleAuth={this.handleAuth} {...props}/>} /> : <Redirect to='/dashboard' /> }
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/preferences' component={Preferences} />
-        <Route path='/checkin' component={Quiz} />
+        <Route path='/checkin' component={Quiz} onClick={this.props.handleSubmit} />
       </div>
     );
   }
