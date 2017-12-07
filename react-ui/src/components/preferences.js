@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Preferences extends Component {
   constructor(props) {
     super(props);
-    //this.state = {user:null}//{date: new Date(), sleep: true, diet: true, activity: true, emotional: true, social: true, occupational: true, spiritual: true, intellectual: true }
+    console.log("Prefs props:", props);
+    this.state = this.props.user.userData.preferences;
     this.onChange = this.onChange.bind(this);
   }
-
-//   componentWillReceiveProps(nextProps) {
-//     console.log('what is next props',nextProps);
-//   this.setState({ data: nextProps.user });
-//   console.log('prefs state update', this.state);
-// }
 
   onChange = (event) => {
     if(event.target.name === 'sleep'){
@@ -57,7 +53,7 @@ class Preferences extends Component {
         <h3 className = "cardTitle">User Preferences</h3>
         <hr className="divider"></hr>
         <h5>Which wellness aspects would you like to track?</h5>
-        <div className="prefList"><label>Sleep</label><input type="checkbox" name="sleep" onClick={this.onChange} defaultChecked /></div>
+        <div className="prefList"><label>Sleep</label><input type="checkbox" name="sleep" checked={this.state.user.userData.preferences.sleep} onClick={this.onChange} /></div>
         <div className="prefList"><label>Diet</label><input type="checkbox" name="diet" onClick={this.onChange} defaultChecked /></div>
         <div className="prefList"><label>Activity</label><input type="checkbox" name="activity" onClick={this.onChange} defaultChecked /></div>
         <div className="prefList"><label>Emotional</label><input type="checkbox" name="emotional" onClick={this.onChange} defaultChecked /></div>
@@ -65,7 +61,7 @@ class Preferences extends Component {
         <div className="prefList"><label>Occupational</label><input type="checkbox" name="occupational" onClick={this.onChange} defaultChecked /></div>
         <div className="prefList"><label>Spiritual</label><input type="checkbox" name="spiritual" onClick={this.onChange} defaultChecked /></div>
         <div className="prefList"><label>Intellectual</label><input type="checkbox" name="intellectual" onClick={this.onChange} defaultChecked /></div>
-        <button className="formSubmit" onClick={() => { this.props.handlePreferences(this.state) }}>Submit</button>
+        <Link to="/dashboard"><button className="formSubmit" onClick={() => { this.props.handlePreferences(this.state) }}>Submit</button></Link>
       </form>
     </div>
   )}
