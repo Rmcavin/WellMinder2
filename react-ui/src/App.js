@@ -70,6 +70,14 @@ class App extends Component {
   }
 
   handleSubmit(data) {
+    let quizData = [];
+    let q = this.state.user.userData;
+    if(q.quizData){
+      quizData.push(data)
+    }else{
+      q["quizData"] = [data];
+    }
+    console.log(q);
     console.log('user at the time of quiz',this.state.user)
     console.log('user quiz data at app', data)
   }
