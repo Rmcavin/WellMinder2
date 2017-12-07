@@ -17,7 +17,7 @@ class App extends Component {
     this.handleSignOut = this.handleSignOut.bind(this);
     this.handlePreferences = this.handlePreferences.bind(this);
 
-    this.state = { isLoggedIn: false, user: null, prefs: null }
+    this.state = { isLoggedIn: false, user: null }
   }
 
   componentWillMount() {
@@ -33,22 +33,32 @@ class App extends Component {
     const database = firebase.database();
   }
 
-  componentDidMount() {
-    console.log("Component mounted state", this.state);
-  }
-
+  // componentDidMount() {
+  //   console.log("Component mounted state", this.state);
+  // }
+  //
   componentDidUpdate() {
-    console.log("State from app-level component:", this.state);
+    console.log("State from app-level component:", this.state.user);
     console.log("userId",this.state.user.user.uid)
     //db needs to update now
     //writeUserData(this.state)
   }
+
+  // writeUserData(userData) {
+  //   console.log('WRITE USER DATA');
+  //   let userId = firebase.auth().currentUser.uid;
+  //   if (this.state.user) {
+  //     firebase.database().ref('users/' + this.state.user.uid).set(user.userData);
+  //   }
+  // }
 
   //UPDATE USER STATE WITH SERVER DATA
   getSnap(snap) {
     let user = this.state.user;
     if (!snap.val()) {
       user.userData = {
+        currentScores: {"streak": 0, "total": 0, "sleep": 0, "diet": 0, "activity": 0, "emotional": 0, "social": 0, "occupational": 0, "spiritual": 0, "intellectual": 0},
+        tiers: {"streak": "level one", "total": "level one", "sleep": "level one", "diet": "level one", "activity": "level one", "emotional": "level one", "social": "level one", "occupational": "level one", "spiritual": "level one", "intellectual": "level one"},
         preferences: {"sleep": true, "diet": true, "activity": true, "emotional": true, "social": true, "occupational": true, "spiritual": true, "intellectual": true}
       }
       let userId = firebase.auth().currentUser.uid;
@@ -87,23 +97,19 @@ class App extends Component {
   }
 
   handlePreferences(prefs) {
-    console.log(prefs);
-    this.setState({ prefs: prefs });
+    let user = this.state.user;
+    user.userData.preferences = prefs;
+    this.setState({ user: user });
   }
-
-  writeUserData(data) {
-    firebase.database().ref('users/' + this.state.user.user.uid).set(data);
-  }
-  //  { !this.state.isLoggedIn ? <Route exact path='/' render={(props) => <Landing handleAuth={this.handleAuth} user={this.state.user}{...props}/>} /> : <Redirect to='/dashboard' /> }
 
   render() {
     return (
       <div className='App'>
         <Navbar isLoggedIn={this.state.isLoggedIn} handleSignOut={this.handleSignOut}/>
-        <Route exact path='/' render={(props) => <Landing {...props} handleAuth={this.handleAuth} user={this.state.user}/>}/>
+        <Route exact path='/' render={(props) => <Landing {...props} handleAuth={this.handleAuth} user={this.state.user} />}/>
         <Route path='/dashboard' render={(props) => <Dashboard {...props} user={this.state.user}/>}/>
-        <Route path='/preferences' render={(props) => <Preferences {...props} user={this.state.user}/>}/>
-        <Route path='/checkin' render={(props) => <Quiz {...props} quizUpdate={this.handleSubmit}/>}/>
+        <Route path='/preferences' render={(props) => <Preferences {...props} handlePreferences={this.handlePreferences} user={this.state.user} />}/>
+        <Route path='/checkin' render={(props) => <Quiz {...props} quizUpdate={this.handleSubmit} user={this.state.user} />}/>
       </div>
     );
   }

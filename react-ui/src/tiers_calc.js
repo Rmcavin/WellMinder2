@@ -6,7 +6,7 @@ function scoreCalc(quizResults, currentScore) {
   aspects.forEach((aspect) => {
     if (quizResults[aspect]) {
       let points = scoreMap[quizResults[aspect]]
-      let score = sampleScore[aspect] + points;
+      let score = currentScore[aspect] + points;
       dailyScores[aspect] = score;
     }
   })
