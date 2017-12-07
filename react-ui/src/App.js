@@ -39,9 +39,9 @@ class App extends Component {
     this.setState({ isLoggedIn: true, user:user});
   }
 
-  handleSubmit = (data) => {
+  handleSubmit(data) {
     //event.preventDefault();
-    //let updates = {quizData: data}
+    //this.state.user.quizData.push(data);
     //this.setState({user: updates)
     console.log('app level state!!',this.state);
     console.log('the data', data);
