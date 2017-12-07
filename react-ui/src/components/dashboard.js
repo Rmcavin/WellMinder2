@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import * as d3 from 'd3';
 import testData from '../d3/data'
 import chartData from '../d3/linegraph.js'
