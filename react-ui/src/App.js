@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import { Route, Redirect, Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Navbar from './components/navbar'
 import Dashboard from './components/dashboard'
 import Landing from './components/landing'
@@ -30,7 +30,6 @@ class App extends Component {
       messagingSenderId: "707860039026"
     };
     firebase.initializeApp(config);
-    const database = firebase.database();
   }
 
   // componentDidMount() {
@@ -38,8 +37,8 @@ class App extends Component {
   // }
   //
   componentDidUpdate() {
-    console.log("State from app-level component:", this.state.user);
-    console.log("userId",this.state.user.user.uid)
+    console.log("State from app-level component:", this.state);
+    // console.log("userId",this.state.user.user.uid)
     //db needs to update now
     //writeUserData(this.state)
   }
@@ -68,7 +67,7 @@ class App extends Component {
       user.userData = snap.val()
     }
     this.setState({user:user})
-    console.log('updated state from server', this.state)
+    // console.log('updated state from server', this.state)
   }
 
   //GET THE DATA SNAPSHOT FROM THE SERVER
@@ -80,12 +79,13 @@ class App extends Component {
   }
 
   handleSubmit(data) {
-    console.log('user at the time of quiz',this.state.user)
-    console.log('user quiz data at app', data)
+    // console.log('user at the time of quiz',this.state.user)
+    // console.log('user quiz data at app', data)
   }
 
-  handleSignOut(result){
-    this.setState({ isLoggedIn: false, user: result });
+  handleSignOut(){
+    this.setState({ isLoggedIn: false, user: null });
+    window.location.href="/";
   }
 
   handlePreferences(prefs) {
@@ -97,11 +97,11 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Navbar isLoggedIn={this.state.isLoggedIn} handleSignOut={this.handleSignOut}/>
-        <Route exact path='/' render={(props) => <Landing {...props} handleAuth={this.handleAuth} user={this.state.user} />}/>
-        <Route path='/dashboard' render={(props) => <Dashboard {...props} user={this.state.user}/>}/>
-        <Route path='/preferences' render={(props) => <Preferences {...props} handlePreferences={this.handlePreferences} user={this.state.user} />}/>
-        <Route path='/checkin' render={(props) => <Quiz {...props} quizUpdate={this.handleSubmit} user={this.state.user} />}/>
+        <Navbar isLoggedIn={this.state.isLoggedIn} handleSignOut={this.handleSignOut} />
+        <Route exact path='/' render={(props) => <Landing {...props} handleAuth={this.handleAuth} user={this.state.user} isLoggedIn={this.state.isLoggedIn} />}/>
+        <Route path='/dashboard' render={(props) => <Dashboard {...props} user={this.state.user} isLoggedIn={this.state.isLoggedIn} />}/>
+        <Route path='/preferences' render={(props) => <Preferences {...props} handlePreferences={this.handlePreferences} user={this.state.user} isLoggedIn={this.state.isLoggedIn} />}/>
+        <Route path='/checkin' render={(props) => <Quiz {...props} quizUpdate={this.handleSubmit} user={this.state.user} isLoggedIn={this.state.isLoggedIn} />}/>
       </div>
     );
   }
