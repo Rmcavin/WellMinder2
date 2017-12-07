@@ -31,11 +31,17 @@ class App extends Component {
 
   componentDidUpdate() {
     console.log("State from app-level component:", this.state);
+    console.log("userId",this.state.user.user.uid)
+    //writeUserData(this.state)
   }
 
   handleAuth(user) {
     console.log("handleAuth", user);
     this.setState({ isLoggedIn: true, user:user});
+  }
+
+  writeUserData(data) {
+    firebase.database().ref('users/' + this.state.user.user.uid).set(data);
   }
 
   render() {

@@ -6,6 +6,7 @@ class Quiz extends Component {
     super(props);
     this.state = { date: new Date(), sleep: -3, diet: -3, activity: -3, emotional: -3, social: -3, occupational: -3, spiritual: -3, intellectual: -3 }
     this.handleClick = this.handleClick.bind(this);
+    console.log(this.props);
   }
 
   handleClick = (event) => {
