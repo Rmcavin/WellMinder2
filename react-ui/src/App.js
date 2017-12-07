@@ -37,9 +37,8 @@ class App extends Component {
   // }
   //
   componentDidUpdate() {
-
     console.log("State from app-level component:", this.state.user);
-    console.log("userId",this.state.user.user.uid)
+    //console.log("userId",this.state.user.user.uid)
     if (this.state.user.userData) {
       this.writeUserData()
     }
@@ -105,16 +104,8 @@ class App extends Component {
   handleSubmit(data) {
     let quizData = [];
     let q = this.state.user;
-    
-    if(q.userData.quizData){
-      quizData.push(data)
-    }else{
-      q.userData.quizData = [data];
-    }
-    this.setState({ user: q });
-    console.log(q.userData);
-    // console.log('user at the time of quiz',this.state.user)
-    // console.log('user quiz data at app', data)
+    q.userData.quizData.push(data)
+    this.setState({ user: q })
   }
 
   handleSignOut(){

@@ -30,7 +30,7 @@ class Dashboard extends Component {
     if (this.state.data.quizData) {
       //let pairs = Object.values(this.state.data.quizData);
       //console.log(input);
-      chartData(this.state.data.quizData)
+      //chartData(this.state.data.quizData)
     }
   }
 
