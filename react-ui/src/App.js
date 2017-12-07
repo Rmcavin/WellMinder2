@@ -43,6 +43,7 @@ class App extends Component {
     if (this.state.user.userData) {
       this.writeUserData()
     }
+  }
 
   writeUserData() {
     let userId = firebase.auth().currentUser.uid;

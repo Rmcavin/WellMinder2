@@ -29,8 +29,8 @@ class Dashboard extends Component {
   componentDidUpdate() {
     console.log('DASHBOARD STATE UPDATE', this.state);
     if (this.state.data.quizData) {
-      console.log('inputData', this.state.data.quizData);
-      chartData(this.state.data.quizData)
+      console.log('inputData', [this.state.data.quizData]);
+      //chartData(this.state.data.quizData)
     }
   }
 
