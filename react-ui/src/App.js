@@ -37,19 +37,39 @@ class App extends Component {
   // }
   //
   componentDidUpdate() {
-    console.log("State from app-level component:", this.state);
-    // console.log("userId",this.state.user.user.uid)
-    //db needs to update now
-    //writeUserData(this.state)
+
+    console.log("State from app-level component:", this.state.user);
+    console.log("userId",this.state.user.user.uid)
+    if (this.state.user.userData) {
+      this.writeUserData()
+    }
   }
 
-  // writeUserData(userData) {
-  //   console.log('WRITE USER DATA');
-  //   let userId = firebase.auth().currentUser.uid;
-  //   if (this.state.user) {
-  //     firebase.database().ref('users/' + this.state.user.uid).set(user.userData);
-  //   }
-  // }
+  writeUserData() {
+    let userId = firebase.auth().currentUser.uid;
+    // let updates = {}
+    // if (this.state.user.userData.preferences) {
+    //   updates.preferences = this.state.user.userData.preferences;
+    // }
+    // if (this.state.user.userData.tiers) {
+    //   updates.tiers = this.state.user.userData.tiers;
+    // }
+    // if (this.state.user.userData.currentScores) {
+    //   updates.currentScores = this.state.user.userData.currentScores;
+    // }
+    // if (this.state.user.userData.quizData) {
+    //   updates.quizData = this.state.user.userData.quizData;
+    // }
+    // let pairs = Object.entries(updates)
+    // console.log('THE PAIRS',pairs)
+
+    firebase.database().ref('users/' + userId).update({
+      preferences: this.state.user.userData.preferences,
+      tiers: this.state.user.userData.tiers,
+      currentScores: this.state.user.userData.currentScores,
+      quizData: this.state.user.userData.quizData});
+}
+
 
   //UPDATE USER STATE WITH SERVER DATA
   getSnap(snap) {
@@ -58,7 +78,8 @@ class App extends Component {
       user.userData = {
         currentScores: {"streak": 0, "total": 0, "sleep": 0, "diet": 0, "activity": 0, "emotional": 0, "social": 0, "occupational": 0, "spiritual": 0, "intellectual": 0},
         tiers: {"streak": "level one", "total": "level one", "sleep": "level one", "diet": "level one", "activity": "level one", "emotional": "level one", "social": "level one", "occupational": "level one", "spiritual": "level one", "intellectual": "level one"},
-        preferences: {"sleep": true, "diet": true, "activity": true, "emotional": true, "social": true, "occupational": true, "spiritual": true, "intellectual": true}
+        preferences: {"sleep": true, "diet": true, "activity": true, "emotional": true, "social": true, "occupational": true, "spiritual": true, "intellectual": true},
+        quizData: {date: null, sleep: 0, diet: 0, activity: 0, emotional: 0, social: 0, occupational: 0, spiritual: 0, intellectual: 0},
       }
       let userId = firebase.auth().currentUser.uid;
       firebase.database().ref('users/' + userId).set(user.userData);
@@ -79,6 +100,15 @@ class App extends Component {
   }
 
   handleSubmit(data) {
+    let quizData = [];
+    let q = this.state.user;
+    if(q.userData.quizData){
+      quizData.push(data)
+    }else{
+      q.userData.quizData = [data];
+    }
+    this.setState({ user: q });
+    console.log(q.userData);
     // console.log('user at the time of quiz',this.state.user)
     // console.log('user quiz data at app', data)
   }
