@@ -14,6 +14,8 @@ class App extends Component {
     this.handleAuth = this.handleAuth.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getSnap = this.getSnap.bind(this);
+    this.handleSignOut = this.handleSignOut.bind(this);
+
     this.state = { isLoggedIn: false, user: null }
   }
 
@@ -32,7 +34,9 @@ class App extends Component {
 
   componentDidUpdate() {
     console.log("State from app-level component:", this.state);
+    console.log("userId",this.state.user.user.uid)
     //db needs to update now
+    //writeUserData(this.state)
   }
 
   getSnap(snap) {
@@ -57,28 +61,6 @@ class App extends Component {
       let userId = firebase.auth().currentUser.uid;
       let serverRef = firebase.database().ref('users/' + userId).once('value').then(this.getSnap);
     })
-
-    //console.log('user from server!',serverData);
-    // if (!user.userData) {
-    //   user.userData = {
-    //     "preferences": {"sleep": true, "diet": true, "activity": true, "emotional": true, "social": true, "occupational": true, "spiritual": true, "intellectual": true},
-    //     "quizData": [],
-    //     "tiers": {},
-    //     "currentScores": {}}
-    //
-    //     firebase.database().ref('users/' + user.user.uid + '/userData').set({
-    //       preferences: {"sleep": true, "diet": true, "activity": true, "emotional": true, "social": true, "occupational": true, "spiritual": true, "intellectual": true},
-    //       quizData: [],
-    //       tiers: {},
-    //       currentScores: {}
-    //     })
-    //
-    //     console.log('in the userdata method')
-    //
-    //   let defaultData = user.userData;
-    //   this.setState({user: defaultData})
-    // }
-    // console.log('THE UPDATED USER DATA',user);
   }
 
   handleSubmit(data) {
@@ -89,10 +71,19 @@ class App extends Component {
     console.log('the data', data);
   }
 
+
+  handleSignOut(){
+    this.setState({ isLoggedIn: false, user: null });
+  }
+
+  writeUserData(data) {
+    firebase.database().ref('users/' + this.state.user.user.uid).set(data);
+  }
+
   render() {
     return (
       <div className='App'>
-        <Navbar isLoggedIn={this.state.isLoggedIn} />
+        <Navbar isLoggedIn={this.state.isLoggedIn} handleSignOut={this.handleSignOut}/>
         { !this.state.isLoggedIn ? <Route exact path='/' render={(props) => <Landing handleAuth={this.handleAuth} user={this.state.user}{...props}/>} /> : <Redirect to='/dashboard' /> }
         <Route path='/dashboard' render={(props) => <Dashboard {...props} user={this.state.user}/>}/>
         <Route path='/preferences' render={(props) => <Preferences {...props} user={this.state.user}/>}/>
