@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
 import firebase from 'firebase';
 
 class Landing extends Component {
@@ -72,17 +71,19 @@ class Landing extends Component {
           type="text"
           name="email"
           placeholder="Email Address"
+          className="loginInput"
           value={this.state.email}
           onChange={event => this.onEmailChange(event.target.value)} />
         <input
           type="password"
           name="password"
           placeholder="Password"
+          className="loginInput"
           value={this.state.password}
           onChange={event => this.onPasswordChange(event.target.value)} />
           <div className="buttons">
-            <button onClick={this.onEmailSignIn}>Sign in/create account with E-mail</button>
-            <div className="g-signin2" data-onsuccess="onSignIn" onClick={this.onGoogleSignIn}></div>
+            <button className="formSubmit" onClick={(e) => this.onEmailSignIn(e)}>Sign in/create account with E-mail</button>
+            <div className="g-signin2" data-onsuccess="onSignIn" onClick={(e) => this.onGoogleSignIn(e)}></div>
           </div>
       </form>
     </div>

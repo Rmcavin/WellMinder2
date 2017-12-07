@@ -13,8 +13,9 @@ class App extends Component {
     super(props);
     this.handleAuth = this.handleAuth.bind(this);
     this.handleSignOut = this.handleSignOut.bind(this);
+    this.handlePreferences = this.handlePreferences.bind(this);
 
-    this.state = { isLoggedIn: false, user: null }
+    this.state = { isLoggedIn: false, user: null, prefs: null }
   }
 
   componentWillMount() {
@@ -30,17 +31,26 @@ class App extends Component {
     const database = firebase.database();
   }
 
+  componentDidMount() {
+    console.log("Component mounted state", this.state);
+  }
+
   componentDidUpdate() {
     console.log("State from app-level component:", this.state);
   }
 
   handleAuth(user) {
-    console.log("handleAuth", user);
-    this.setState({ isLoggedIn: true, user: user});
+    this.setState({ isLoggedIn: true, user: user.user});
   }
 
-  handleSignOut(){
-    this.setState({ isLoggedIn: false, user: null });
+  handleSignOut(result){
+    console.log('******handleSignOut******');
+    this.setState({ isLoggedIn: false, user: result });
+  }
+
+  handlePreferences(prefs) {
+    console.log(prefs);
+    this.setState({ prefs: prefs });
   }
 
   render() {
@@ -49,7 +59,7 @@ class App extends Component {
         <Navbar isLoggedIn={this.state.isLoggedIn} handleSignOut={this.handleSignOut} />
         { !this.state.isLoggedIn ? <Route exact path='/' render={(props) => <Landing handleAuth={this.handleAuth} {...props}/>} /> : <Redirect to='/dashboard' /> }
         <Route path='/dashboard' component={Dashboard} />
-        <Route path='/preferences' component={Preferences} />
+        <Route path='/preferences' render={(props) => <Preferences handlePreferences={this.handlePreferences} {...props} />} />
         <Route path='/checkin' component={Quiz} />
       </div>
     );
