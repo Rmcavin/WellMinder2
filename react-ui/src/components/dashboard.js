@@ -13,7 +13,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.setState({data: testData});
+    //this.setState({data: testData});
     let width = .9 * window.innerWidth;
     let height = .5 * width;
     this.setState({width: width, height: height})
@@ -29,8 +29,9 @@ class Dashboard extends Component {
   componentDidUpdate() {
     console.log('DASHBOARD STATE UPDATE', this.state);
     if (this.state.data.quizData) {
-      console.log('inputData', [this.state.data.quizData]);
-      //chartData(this.state.data.quizData)
+      //let pairs = Object.values(this.state.data.quizData);
+      //console.log(input);
+      chartData(this.state.data.quizData)
     }
   }
 

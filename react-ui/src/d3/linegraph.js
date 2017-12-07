@@ -2,10 +2,7 @@ import * as d3 from 'd3';
 
 function chartData(testData) {
 
-  console.log('is array?' , Array.isArray(testData));
-
-  if (testData.length <= 1) {
-    console.log('AM I IN HERE?!');
+  if (testData.length <= 2) {
     return 'no data to graph!'
   }
 
@@ -13,8 +10,10 @@ function chartData(testData) {
 //======================= PROCESS DATA TO PROPER FORMAT =========================
   let inputData = aspects.map(function(id) {
     return {id: id,
-    values: testData.map(function(d) {
-      return {date: new Date(d.date), score: parseFloat(d[id])}
+    values: testData.map(function(d,i) {
+      if (d.date) {
+        return {date: new Date(d.date), score: parseFloat(d[id])}
+      }
     })}
   })
 
