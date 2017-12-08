@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.user.userData) {
+    if (this.state.user && this.state.user.userData) {
       this.writeUserData()
     }
   }

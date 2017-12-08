@@ -16,13 +16,13 @@ class Dashboard extends Component {
     let height = .5 * width;
     this.setState({width: width, height: height})
 
-    if(this.props.user.userData) {
+    if(this.props.user && this.props.user.userData) {
       this.setState({data: this.props.user.userData})
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.user.userData) {
+    if (nextProps.user && nextProps.user.userData) {
       this.setState({data: nextProps.user.userData})
     }
   }
