@@ -36,7 +36,7 @@ export function scoreCalc(quizResults, currentScore) {
   else if (days >= 1) {
     dailyScores.streak = currentScore.streak++
   }
-  if (dailyScores.streak < 0) {
+  if (dailyScores.streak <= 0) {
     dailyScores.streak = 0;
   }
   return dailyScores;
