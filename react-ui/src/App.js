@@ -7,6 +7,7 @@ import Landing from './components/landing'
 import Preferences from './components/preferences'
 import Quiz from './components/quiz'
 import './App.css';
+import { scoreCalc, tierCalc } from './tiers_calc';
 
 class App extends Component {
   constructor(props) {
@@ -46,6 +47,7 @@ class App extends Component {
 
   writeUserData() {
     let userId = firebase.auth().currentUser.uid;
+    console.log("this.state.user.userData.currentScores:", this.state.user.userData.currentScores);
     // let updates = {}
     // if (this.state.user.userData.preferences) {
     //   updates.preferences = this.state.user.userData.preferences;
@@ -105,10 +107,12 @@ class App extends Component {
   }
 
   handleSubmit(data) {
-    let quizData = [];
     let q = this.state.user;
+    console.log("data from quiz:", data);
     q.userData.quizData.push(data)
+    q.userData.currentScores = scoreCalc(data, q.userData.currentScores )
     this.setState({ user: q })
+    console.log("q.userData:",q.userData);
   }
 
   handleSignOut(){
