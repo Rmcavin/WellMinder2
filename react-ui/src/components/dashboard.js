@@ -28,11 +28,11 @@ class Dashboard extends Component {
   componentDidUpdate() {
     //console.log('DASHBOARD STATE UPDATE', this.state);
     if (this.state.data.quizData) {
-      //let pairs = Object.values(this.state.data.quizData);
-      //console.log(input);
-      //chartData(this.state.data.quizData)
+        let inputData = this.state.data.quizData;
+        chartData(inputData)
+      }
     }
-  }
+
 
   render() {
 
