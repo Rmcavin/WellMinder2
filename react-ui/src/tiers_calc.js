@@ -1,6 +1,6 @@
 let aspects = ["sleep", "diet", "activity", "emotional", "social", "occupational", "spiritual", "intellectual"]
 export function scoreCalc(quizResults, currentScore) {
-  console.log('this is the data that comes into scoreCalc', quizResults, CurrentScore)
+  console.log('this is the data that comes into scoreCalc', quizResults, currentScore)
   let dailyScores = {};
   let scoreMap = {0:0,1:-2, 2:-1, 3:0, 4:1, 5:2}
   //aspect scores
