@@ -61,7 +61,8 @@ export function tierCalc(scores) {
         }
       })
       userTiers[aspect] = tier;
-      //console.log("userTiers[aspect]:", userTiers[aspect]);
+    } else {
+      userTiers[aspect] = 'Not tracking';
     }
   })
   //total tier
