@@ -111,6 +111,7 @@ class App extends Component {
     console.log("data from quiz:", data);
     q.userData.quizData.push(data)
     q.userData.currentScores = scoreCalc(data, q.userData.currentScores )
+    q.userData.tiers = tierCalc(q.userData.currentScores);
     this.setState({ user: q })
     console.log("q.userData:",q.userData);
   }

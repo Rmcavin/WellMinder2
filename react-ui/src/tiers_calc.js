@@ -33,6 +33,7 @@ export function scoreCalc(quizResults, currentScore) {
 }
 
 export function tierCalc(scores) {
+  console.log('tierCalc scores input', scores);
   let totalTiers = {0:"level one",28:"level two", 42:"level three", 63:"level four", 95:"level five", 142:"level six", 214:"level seven", 320:"level eight", 480:"level nine", 720:"level ten"};
   let aspectTiers = {0:"level one",10:"level two", 20:"level three", 30:"level four", 40:"level five", 50:"level six", 60:"level seven", 70:"level eight", 80:"level nine", 90:"level ten"};
   let streakTiers = {0:"level one",1:"level two", 2:"level three", 3:"level four", 4:"level five", 5:"level six", 6:"level seven", 7:"level eight", 8:"level nine", 9:"level ten"};
