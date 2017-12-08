@@ -77,7 +77,7 @@ g.append("g")
     .attr("class", "line")
     .attr("d", function(d) { return line(d.values); })
     .attr("id", function(d) {
-      console.log(d)
+      //console.log(d)
       return d.id})
     .attr("class", function(d) { return d.id + "color"})
     //.style("stroke", function(d) {return color(d.id); })
