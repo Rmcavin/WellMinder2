@@ -61,6 +61,8 @@ export function tierCalc(scores) {
         }
       })
       userTiers[aspect] = tier;
+    } else {
+      userTiers[aspect] = 'Not tracking';
     }
   })
   //total tier
