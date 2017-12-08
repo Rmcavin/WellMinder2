@@ -118,4 +118,3 @@ g.append("g")
 }
 
 export default chartData;
-//chartData(testData);
