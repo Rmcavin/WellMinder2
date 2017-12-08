@@ -79,8 +79,11 @@ class App extends Component {
         tiers: {"streak": "level one", "total": "level one", "sleep": "level one", "diet": "level one", "activity": "level one", "emotional": "level one", "social": "level one", "occupational": "level one", "spiritual": "level one", "intellectual": "level one"},
         preferences: {"sleep": true, "diet": true, "activity": true, "emotional": true, "social": true, "occupational": true, "spiritual": true, "intellectual": true},
         quizData: [
-          {date: null, sleep: 0, diet: 0, activity: 0, emotional: 0, social: 0, occupational: 0, spiritual: 0, intellectual: 0},
-          {date: null, sleep: 0, diet: 0, activity: 0, emotional: 0, social: 0, occupational: 0, spiritual: 0, intellectual: 0}
+          {date: new Date("2017-12-04T23:49:06.125Z"), sleep: 3, diet: 4, activity: 2, emotional: 3, social: 2, occupational: 1, spiritual: 2, intellectual: 1},
+          {date: new Date("2017-12-05T23:49:06.125Z"), sleep: 2, diet: 3, activity: 4, emotional: 2, social: 4, occupational: 4, spiritual: 4, intellectual: 3},
+          {date: new Date("2017-12-06T23:49:06.125Z"), sleep: 4, diet: 5, activity: 4, emotional: 3, social: 2, occupational: 1, spiritual: 2, intellectual: 1},
+          {date: new Date("2017-12-07T23:49:06.125Z"), sleep: 3, diet: 2, activity: 3, emotional: 4, social: 5, occupational: 3, spiritual: 4, intellectual: 5},
+          {date: new Date("2017-12-08T23:49:06.125Z"), sleep: 4, diet: 2, activity: 1, emotional: 5, social: 3, occupational: 5, spiritual: 2, intellectual: 4}
         ]
       }
       let userId = firebase.auth().currentUser.uid;

@@ -3,20 +3,21 @@ import * as d3 from 'd3';
 function chartData(testData) {
 
   if (testData.length <= 2) {
-    return 'no data to graph!'
+    console.log('no data to graph!')
+    return;
   }
 
   let aspects = ['sleep', 'diet', 'activity', 'emotional', 'social', 'occupational', 'spiritual', 'intellectual']
 //======================= PROCESS DATA TO PROPER FORMAT =========================
+
   let inputData = aspects.map(function(id) {
     return {id: id,
-    values: testData.map(function(d,i) {
-      if (d.date) {
-        return {date: new Date(d.date), score: parseFloat(d[id])}
-      }
-    })}
+    values: testData.map(function(d) {
+          return {date: new Date(d.date), score: parseFloat(d[id])}
+        })}
   })
 
+  console.log('THE PROCESSED DATA', inputData);
 //========================= GRAB & SET UP SVG ELEMENT ============================
   let svg = d3.select("#graph"),
   margin = {top: 20, right: 80, bottom: 100, left: 50},
@@ -42,7 +43,8 @@ function chartData(testData) {
     .x(function(d) { return x(d.date); })
     .y(function(d) {return y(d.score); });
 
-x.domain(d3.extent(testData, function(d) { return Date.parse(d.date);}));
+x.domain(d3.extent(testData, function(d) {
+  return Date.parse(d.date); }));
 
 y.domain([
   d3.min(inputData, function(c) { return d3.min(c.values, function(d) { return d.score;}); }),
@@ -74,7 +76,9 @@ g.append("g")
   aspect.append("path")
     .attr("class", "line")
     .attr("d", function(d) { return line(d.values); })
-    .attr("id", function(d) { return d.id})
+    .attr("id", function(d) {
+      console.log(d)
+      return d.id})
     .attr("class", function(d) { return d.id + "color"})
     //.style("stroke", function(d) {return color(d.id); })
     .style("fill", "none")
