@@ -16,6 +16,10 @@ class Dashboard extends Component {
     let width = .9 * window.innerWidth;
     let height = .5 * width;
     this.setState({width: width, height: height})
+
+    if(this.props.user.userData) {
+      this.setState({data: this.props.user.userData})
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -35,6 +39,11 @@ class Dashboard extends Component {
 
 
   render() {
+
+    if (this.state.data.quizData) {
+        let inputData = this.state.data.quizData;
+        chartData(inputData)
+      }
 
     return (
     <main className = 'dashboard card'>
