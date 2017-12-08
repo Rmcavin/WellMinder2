@@ -77,6 +77,9 @@ export function tierCalc(scores) {
   //streak tier
   let streakBrackets = Object.keys(streakTiers);
   let streaktier;
+  if (!scores.streak) {
+    scores.streak = 0;
+  }
   streakBrackets.forEach( (bracket) => {
     if (scores.streak >= bracket) {
       streaktier = streakTiers[bracket];
