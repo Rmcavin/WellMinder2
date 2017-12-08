@@ -22,19 +22,10 @@ class Dashboard extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('what is nextProps',nextProps);
     if (nextProps.user.userData) {
       this.setState({data: nextProps.user.userData})
     }
   }
-
-  componentDidUpdate() {
-    //console.log('DASHBOARD STATE UPDATE', this.state);
-    if (this.state.data.quizData) {
-        let inputData = this.state.data.quizData;
-        chartData(inputData)
-      }
-    }
 
 
   render() {

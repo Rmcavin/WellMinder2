@@ -33,13 +33,7 @@ class App extends Component {
     firebase.initializeApp(config);
   }
 
-  // componentDidMount() {
-  //   console.log("Component mounted state", this.state);
-  // }
-  //
   componentDidUpdate() {
-    console.log("State from app-level component:", this.state.user);
-    //console.log("userId",this.state.user.user.uid)
     if (this.state.user.userData) {
       this.writeUserData()
     }
@@ -47,22 +41,6 @@ class App extends Component {
 
   writeUserData() {
     let userId = firebase.auth().currentUser.uid;
-    // let updates = {}
-    // if (this.state.user.userData.preferences) {
-    //   updates.preferences = this.state.user.userData.preferences;
-    // }
-    // if (this.state.user.userData.tiers) {
-    //   updates.tiers = this.state.user.userData.tiers;
-    // }
-    // if (this.state.user.userData.currentScores) {
-    //   updates.currentScores = this.state.user.userData.currentScores;
-    // }
-    // if (this.state.user.userData.quizData) {
-    //   updates.quizData = this.state.user.userData.quizData;
-    // }
-    // let pairs = Object.entries(updates)
-    // console.log('THE PAIRS',pairs)
-
     firebase.database().ref('users/' + userId).update({
       preferences: this.state.user.userData.preferences,
       tiers: this.state.user.userData.tiers,
@@ -94,7 +72,6 @@ class App extends Component {
       user.userData = snap.val()
     }
     this.setState({user:user})
-    // console.log('updated state from server', this.state)
   }
 
   //GET THE DATA SNAPSHOT FROM THE SERVER
@@ -111,7 +88,6 @@ class App extends Component {
     q.userData.currentScores = scoreCalc(data, q.userData.currentScores);
     q.userData.tiers = tierCalc(q.userData.currentScores);
     this.setState({ user: q });
-    console.log("q.userData:",q.userData);
   }
 
   handleSignOut(){
