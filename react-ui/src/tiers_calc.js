@@ -56,7 +56,7 @@ export function tierCalc(scores) {
       let brackets = Object.keys(aspectTiers);
       let tier;
       brackets.forEach( (bracket) => {
-        if (scores[aspect] > bracket) {
+        if (scores[aspect] >= bracket) {
           tier = aspectTiers[bracket]
         }
       })
@@ -67,7 +67,7 @@ export function tierCalc(scores) {
   let totalBrackets = Object.keys(totalTiers);
   let totaltier;
   totalBrackets.forEach( (bracket) => {
-    if (scores.total > bracket) {
+    if (scores.total >= bracket) {
       totaltier = totalTiers[bracket];
     }
   })
@@ -77,7 +77,7 @@ export function tierCalc(scores) {
   let streakBrackets = Object.keys(streakTiers);
   let streaktier;
   streakBrackets.forEach( (bracket) => {
-    if (scores.streak > bracket) {
+    if (scores.streak >= bracket) {
       streaktier = streakTiers[bracket];
     }
   })
