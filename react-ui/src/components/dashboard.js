@@ -12,7 +12,6 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    //this.setState({data: testData});
     let width = .9 * window.innerWidth;
     let height = .5 * width;
     this.setState({width: width, height: height})
