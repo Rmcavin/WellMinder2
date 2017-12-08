@@ -27,13 +27,15 @@ class Dashboard extends Component {
     }
   }
 
-
-  render() {
-
+  componentDidUpdate() {
     if (this.state.data.quizData) {
         let inputData = this.state.data.quizData;
         chartData(inputData)
       }
+  }
+
+
+  render() {
 
     return (
     <main className = 'dashboard card'>
