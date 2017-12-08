@@ -49,6 +49,7 @@ export function tierCalc(scores) {
         }
       })
       userTiers[aspect] = tier;
+      //console.log("userTiers[aspect]:", userTiers[aspect]);
     }
   })
   //total tier

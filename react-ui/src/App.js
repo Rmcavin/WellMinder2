@@ -47,7 +47,6 @@ class App extends Component {
 
   writeUserData() {
     let userId = firebase.auth().currentUser.uid;
-    console.log("this.state.user.userData.currentScores:", this.state.user.userData.currentScores);
     // let updates = {}
     // if (this.state.user.userData.preferences) {
     //   updates.preferences = this.state.user.userData.preferences;
@@ -105,10 +104,10 @@ class App extends Component {
 
   handleSubmit(data) {
     let q = this.state.user;
-    console.log("data from quiz:", data);
-    q.userData.quizData.push(data)
-    q.userData.currentScores = scoreCalc(data, q.userData.currentScores )
-    this.setState({ user: q })
+    q.userData.quizData.push(data);
+    q.userData.currentScores = scoreCalc(data, q.userData.currentScores);
+    q.userData.tiers = tierCalc(q.userData.currentScores);
+    this.setState({ user: q });
     console.log("q.userData:",q.userData);
   }
 
