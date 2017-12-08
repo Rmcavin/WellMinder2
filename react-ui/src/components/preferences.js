@@ -11,35 +11,27 @@ class Preferences extends Component {
   onChange = (event) => {
     if(event.target.name === 'sleep'){
       this.setState({ sleep: !this.state.sleep }, () => {
-        //console.log(this.state)
       });
     }else if(event.target.name === 'diet'){
       this.setState({ diet: !this.state.diet }, () => {
-        //console.log(this.state)
       });
     }else if(event.target.name === 'activity'){
       this.setState({ activity: !this.state.activity }, () => {
-        //console.log(this.state)
       });
     }else if(event.target.name === 'emotional'){
       this.setState({ emotional: !this.state.emotional }, () => {
-        //console.log(this.state)
       });
     }else if(event.target.name === 'social'){
       this.setState({ social: !this.state.social }, () => {
-        //console.log(this.state)
       });
     }else if(event.target.name === 'occupational'){
       this.setState({ occupational: !this.state.occupational }, () => {
-        //console.log(this.state)
       });
     }else if(event.target.name === 'spiritual'){
       this.setState({ spiritual: !this.state.spiritual }, () => {
-        //console.log(this.state)
       });
     }else if(event.target.name === 'intellectual'){
       this.setState({ intellectual: !this.state.intellectual }, () => {
-        //console.log(this.state)
       });
     }
   }

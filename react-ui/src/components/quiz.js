@@ -12,35 +12,27 @@ class Quiz extends Component {
   handleClick = (event) => {
     if(event.target.name === 'sleep'){
       this.setState({ sleep: parseInt(event.target.value, 10) }, () => {
-        //console.log(this.state)
       });
     }else if(event.target.name === 'diet'){
       this.setState({ diet: parseInt(event.target.value, 10) }, () => {
-        // console.log(this.state)
       });
     }else if(event.target.name === 'activity'){
       this.setState({ activity: parseInt(event.target.value, 10) }, () => {
-        // console.log(this.state)
       });
     }else if(event.target.name === 'emotional'){
       this.setState({ emotional: parseInt(event.target.value, 10) }, () => {
-        // console.log(this.state)
       });
     }else if(event.target.name === 'social'){
       this.setState({ social: parseInt(event.target.value, 10) }, () => {
-        // console.log(this.state)
       });
     }else if(event.target.name === 'occupational'){
       this.setState({ occupational: parseInt(event.target.value, 10) }, () => {
-        // console.log(this.state)
       });
     }else if(event.target.name === 'spiritual'){
       this.setState({ spiritual: parseInt(event.target.value, 10) }, () => {
-        // console.log(this.state)
       });
     }else if(event.target.name === 'intellectual'){
       this.setState({ intellectual: parseInt(event.target.value, 10) }, () => {
-        // console.log(this.state)
       });
     }
   }
