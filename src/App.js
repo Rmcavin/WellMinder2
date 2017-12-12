@@ -9,11 +9,6 @@ import Quiz from './components/quiz'
 import './App.css';
 import { scoreCalc, tierCalc } from './tiers_calc';
 import dotenv from 'dotenv'
-console.log('testing config',dotenv.config({path: '../.env'}));
-
-console.log('is it here?',dotenv);
-
-console.log(process.env.REACT_APP_API_KEY);
 
 class App extends Component {
   constructor(props) {
