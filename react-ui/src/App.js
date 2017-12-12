@@ -8,6 +8,12 @@ import Preferences from './components/preferences'
 import Quiz from './components/quiz'
 import './App.css';
 import { scoreCalc, tierCalc } from './tiers_calc';
+import dotenv from 'dotenv'
+console.log('testing config',dotenv.config({path: '../.env'}));
+
+console.log('is it here?',dotenv);
+
+console.log(process.env.REACT_APP_API_KEY);
 
 class App extends Component {
   constructor(props) {
@@ -23,12 +29,12 @@ class App extends Component {
 
   componentWillMount() {
     const config = {
-      apiKey: "AIzaSyBc5KaDNcBS3wWN1kTVtWTGgi2MVjGgZko",
-      authDomain: "wellminder-7beb4.firebaseapp.com",
-      databaseURL: "https://wellminder-7beb4.firebaseio.com",
-      projectId: "wellminder-7beb4",
-      storageBucket: "wellminder-7beb4.appspot.com",
-      messagingSenderId: "707860039026"
+      apiKey: process.env.REACT_APP_API_KEY,
+      authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+      databaseURL: process.env.REACT_APP_DATABASE_URL,
+      projectId: process.env.REACT_APP_PROJECT_ID,
+      storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+      messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
     };
     firebase.initializeApp(config);
   }
