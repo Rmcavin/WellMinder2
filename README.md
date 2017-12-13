@@ -1,6 +1,7 @@
 # Wellminder
 Welcome! Wellminder is a full stack, responsive web application built with React and D3 that tracks and "gamifies" wellness, encouraging users toward positive health choices. This app was built in 5 days by @Rmcavin, @mandafae, and @dtthor for our Q3 project at Galvanize in Austin, TX.
 
+Our app is deployed <a href="wellminder.herokuapp.com" target="_blank">here!</a>
 
 
 ## Login Page
@@ -32,8 +33,6 @@ This is the first non-trivial full stack React application that any of us have b
 2. Whether to use Redux to assist us in state management or not.
 - We decided against Redux because our app only has one parent component and 5 children components, all siblings. If our app went down one or two more levels it would have made more since to use Redux, but since it was just two levels total we decided Redux would have been unnecessary and/or more confusing than helpful.
 
-3. Getting D3 plugged into/playing nicely with our React code.
-
-4. Sending and storing our data properly in Firebase.
+3. Sending and storing our data properly in Firebase.
 - Firebase doesn’t store arrays natively, which was a little annoying, but we were able to work around this by sending it two objects in a list, sort of tricking firebase into accepting the array we were trying to send it.
 
