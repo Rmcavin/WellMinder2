@@ -14,7 +14,7 @@ class Dashboard extends Component {
   componentDidMount() {
     let width = .9 * window.innerWidth;
     let height = .5 * width;
-    this.setState({width: width, height: height})
+
 
     if(this.props.user && this.props.user.userData) {
       this.setState({data: this.props.user.userData})
@@ -23,7 +23,7 @@ class Dashboard extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.user && nextProps.user.userData) {
-      this.setState({data: nextProps.user.userData})
+      this.setState({data: nextProps.userData})
     }
   }
 
