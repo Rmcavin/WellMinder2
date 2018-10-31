@@ -12,11 +12,11 @@ class Landing extends Component {
   }
 
   onEmailChange(email) {
-    this.setState({email});
+    this.setState({email:email});
   }
 
   onPasswordChange(password) {
-    this.setState({password});
+    this.setState({password:password});
     }
 
   onEmailSignIn(e) {
